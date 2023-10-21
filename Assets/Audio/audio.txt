@@ -1,0 +1,3 @@
+all files relates to sound or music should be put here in this folder.
+
+files like .mp3, .wav, formats
