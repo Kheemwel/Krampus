@@ -1,0 +1,8 @@
+all nodes that are saved as scenes should be put here in this folder.
+
+files with .tscn format
+
+Nodes that are saved as scenes to be reusable can be called as components.
+Ex:
+	Area2D
+	Node2D

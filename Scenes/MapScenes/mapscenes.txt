@@ -1,0 +1,3 @@
+all files related to Maps should be put here in this folder.
+
+files with .tscn format

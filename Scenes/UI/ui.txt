@@ -1,0 +1,3 @@
+all scene files related to UI should be put here in this folder.
+
+files with .tscn format

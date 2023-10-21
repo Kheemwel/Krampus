@@ -1,0 +1,3 @@
+all files relates to images should be put here in this folder.
+
+files like .png, .jpg, .jpeg, formats
