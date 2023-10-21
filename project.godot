@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Krampus"
+config/tags=PackedStringArray("project")
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
