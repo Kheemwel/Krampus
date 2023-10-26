@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://yioe5r3o4fio"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_bbymf"]
+[ext_resource type="Texture2D" uid="uid://chkyxl8e0alah" path="res://assets/player/Player-rpg.png" id="1_od5rd"]
+[ext_resource type="PackedScene" uid="uid://d3gpl1wrbwos0" path="res://scenes/joystick.tscn" id="3_16kk4"]
+[ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://assets/UI/Snow.png" id="4_awixi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yspdy"]
+size = Vector2(13, 6)
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="joystick" parent="CanvasLayer" instance=ExtResource("3_16kk4")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.802778
+anchor_right = 0.125
+anchor_bottom = 0.802778
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(552, 400)
+script = ExtResource("1_bbymf")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+texture = ExtResource("1_od5rd")
+hframes = 12
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-0.5, 13)
+shape = SubResource("RectangleShape2D_yspdy")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(4, 4)
+
+[node name="Snow" type="Sprite2D" parent="."]
+position = Vector2(561, 402)
+texture = ExtResource("4_awixi")
