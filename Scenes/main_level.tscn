@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://yioe5r3o4fio"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_bbymf"]
-[ext_resource type="Texture2D" uid="uid://chkyxl8e0alah" path="res://assets/player/Player-rpg.png" id="1_od5rd"]
-[ext_resource type="PackedScene" uid="uid://d3gpl1wrbwos0" path="res://scenes/joystick.tscn" id="3_16kk4"]
-[ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://assets/UI/Snow.png" id="4_awixi"]
+[ext_resource type="Texture2D" uid="uid://chkyxl8e0alah" path="res://Assets/player/Player-rpg.png" id="1_od5rd"]
+[ext_resource type="PackedScene" uid="uid://d3gpl1wrbwos0" path="res://Scenes/joystick.tscn" id="3_16kk4"]
+[ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/UI/Snow.png" id="4_awixi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yspdy"]
 size = Vector2(13, 6)

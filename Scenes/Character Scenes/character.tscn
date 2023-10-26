@@ -4,6 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Character Scripts/character.gd" id="1_psmm1"]
 [ext_resource type="Texture2D" uid="uid://budi6ydyxfvsp" path="res://Assets/World Assets/2d_lights_and_shadows_neutral_point_light.webp" id="3_tnj3x"]
 
+[sub_resource type="Animation" id="Animation_7fs2d"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_kmwuo"]
 resource_name = "idle"
 tracks/0/type = "value"
@@ -35,9 +38,6 @@ tracks/0/keys = {
 "update": 1,
 "values": []
 }
-
-[sub_resource type="Animation" id="Animation_7fs2d"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a0ejb"]
 _data = {
