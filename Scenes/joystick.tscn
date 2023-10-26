@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3gpl1wrbwos0"]
+
+[ext_resource type="Script" path="res://script/joystick.gd" id="1_yd7jd"]
+[ext_resource type="Texture2D" uid="uid://b2wbjvqeccenj" path="res://assets/UI/Ring.png" id="2_kc3im"]
+[ext_resource type="Texture2D" uid="uid://bg6istof6tump" path="res://assets/UI/knob.png" id="3_xcq68"]
+[ext_resource type="Script" path="res://script/knob.gd" id="4_ts72q"]
+
+[node name="joystick" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yd7jd")
+
+[node name="ring" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_kc3im")
+
+[node name="knob" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_xcq68")
+script = ExtResource("4_ts72q")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 29.0
+offset_bottom = 29.0
+
+[connection signal="button_down" from="Button" to="knob" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="knob" method="_on_button_button_up"]
