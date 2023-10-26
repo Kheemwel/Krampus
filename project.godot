@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Test"
-run/main_scene="res://Scenes/MapScenes/Stage 1/stage_1_living_dining_room.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/name="Krampus"
+config/tags=PackedStringArray("project")
+run/main_scene="res://Scenes/splash_screen_manager.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+config/icon="res://icon.svg"
 
 [autoload]
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cga435it4a2gf"]
+
+[ext_resource type="Script" path="res://script/splash_screen.gd" id="1_kf7rh"]
+[ext_resource type="Texture2D" uid="uid://dq1re7bb0j8ul" path="res://assets/UI/STUDIO 41A.png" id="1_wam18"]
+
+[node name="StudioSplashScreen" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kf7rh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_wam18")
