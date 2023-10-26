@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwjon7ci3ctfj"]
+
+[ext_resource type="Script" path="res://Scripts/Character Scripts/door_position.gd" id="1_br6qa"]
+[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/World Scenes/tilemap.tscn" id="1_pi0bo"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/Character Scenes/character.tscn" id="2_82jm0"]
+[ext_resource type="Script" path="res://Scripts/World Scripts/change_room.gd" id="4_g05bg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bahso"]
+size = Vector2(66, 16)
+
+[node name="stage_1_office_room" type="Node2D"]
+script = ExtResource("1_br6qa")
+
+[node name="Tilemap" parent="." instance=ExtResource("1_pi0bo")]
+layer_0/tile_data = PackedInt32Array(65537, 131073, 3, 65538, 131073, 3, 65539, 131073, 3, 65540, 131073, 3, 65541, 131073, 3, 65542, 131073, 3, 65543, 131073, 3, 65544, 131073, 3, 65545, 131073, 3, 131073, 131073, 3, 196609, 131073, 3, 262145, 131073, 3, 262146, 131073, 3, 327681, 131073, 3, 327682, 131073, 3, 327683, 131073, 3, 327684, 131073, 3, 327685, 131073, 3, 327686, 131073, 3, 327687, 131073, 3, 327688, 131073, 3, 327689, 131073, 3, 262153, 131073, 3, 196617, 131073, 3, 131081, 131073, 3, 131079, 131073, 3, 131080, 131073, 3, 196616, 131073, 3, 262152, 131073, 3, 262151, 131073, 3, 262150, 131073, 3, 262149, 131073, 3, 262148, 131073, 3, 262147, 131073, 3, 196610, 131073, 3, 131074, 131073, 3, 131075, 131073, 3, 131076, 131073, 3, 131077, 131073, 3, 196613, 131073, 3, 196614, 131073, 3, 196615, 131073, 3, 196612, 131073, 3, 196611, 131073, 3, 131078, 131073, 3, 65546, 131073, 3, 131082, 131073, 3, 196618, 131073, 3, 262154, 131073, 3, 327690, 131073, 3, 393217, 131073, 3, 393218, 131073, 3, 393219, 131073, 3, 393220, 131073, 3)
+layer_2/tile_data = PackedInt32Array(-65535, 655367, 2, -65534, 655367, 2, -65533, 655367, 2, -65532, 655367, 2, -65531, 655367, 2, -65530, 655367, 2, -65529, 655367, 2, -65528, 655367, 2, -65527, 655367, 2, -65526, 655367, 2, 393222, 655367, 7, 393223, 655367, 7, 393224, 655367, 7, 393225, 655367, 7, 393226, 655367, 7, 393227, 720903, 7, -131061, 720903, 6, -65525, 720903, 6, 11, 720903, 6, 65547, 720903, 6, 131083, 720903, 6, 196619, 720903, 6, 262155, 720903, 6, 327691, 720903, 6, 393216, 327687, 6, 327680, 327687, 6, 262144, 327687, 6, 196608, 327687, 6, 131072, 327687, 6, 65536, 327687, 6, 0, 327687, 6, -65536, 327687, 6, -131072, 327687, 6, -196608, 327687, 5, -196597, 720903, 5, -196607, 524295, 3, -196606, 524295, 3, -196605, 524295, 3, -196604, 524295, 3, -196603, 524295, 3, -196602, 524295, 3, -196601, 524295, 3, -196600, 524295, 3, -196599, 524295, 3, -196598, 524295, 3, 393221, 589831, 7)
+layer_3/tile_data = PackedInt32Array(196616, 196610, 2, 131080, 131074, 5, 196615, 131074, 6, 262151, 131074, 6, 196609, 196610, 2, 7, 65538, 7, 2, 65542, 10)
+
+[node name="Character" parent="." instance=ExtResource("2_82jm0")]
+position = Vector2(51, 113)
+
+[node name="stage_1_library_room" type="Area2D" parent="."]
+script = ExtResource("4_g05bg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_library_room"]
+position = Vector2(49, 126)
+shape = SubResource("RectangleShape2D_bahso")
+
+[node name="stage_1_library_room_pos" type="Marker2D" parent="."]
+position = Vector2(51, 113)
+
+[connection signal="body_entered" from="stage_1_library_room" to="stage_1_library_room" method="_on_body_entered"]
+[connection signal="body_exited" from="stage_1_library_room" to="stage_1_library_room" method="_on_body_exited"]
