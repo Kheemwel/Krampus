@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://gh8kkycbud0o"]
+[gd_scene load_steps=9 format=3 uid="uid://gh8kkycbud0o"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_benoc"]
-[ext_resource type="PackedScene" uid="uid://brcrlfocx6ike" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_qdgvm"]
-[ext_resource type="PackedScene" path="res://Scenes/ComponentScenes/character.tscn" id="2_wfnsy"]
-[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="4_stmwt"]
-[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_xgw24"]
+[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_qdgvm"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_wfnsy"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="4_gd0ir"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="4_tkxvh"]
+[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_xgw24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1el7"]
 size = Vector2(20, 52)
@@ -33,7 +32,7 @@ offset_bottom = 0.279968
 metadata/_edit_use_anchors_ = true
 
 [node name="Character" parent="." instance=ExtResource("2_wfnsy")]
-position = Vector2(153, 399)
+position = Vector2(427, 467)
 
 [node name="Tilemap" parent="." instance=ExtResource("1_qdgvm")]
 position = Vector2(0, -1)
@@ -42,12 +41,6 @@ layer_1/tile_data = PackedInt32Array(327701, 65538, 2, 589846, 131074, 2, 655382
 layer_2/tile_data = PackedInt32Array(65553, 458759, 3, 131089, 458759, 4, 196625, 458759, 4, 262161, 458759, 4, 327697, 458759, 4, 393233, 458759, 4, 458769, 458759, 4, 524305, 458759, 4, 589841, 458759, 4, 655377, 458759, 4, 720913, 458759, 4, 786449, 458759, 4, 851985, 458759, 4, 917521, 458759, 4, 983057, 458759, 4, 1048593, 458759, 4, 1114129, 458759, 4, 1179665, 458759, 4, 1245201, 458759, 4, 1310737, 458759, 4, 1376273, 458759, 4, 1441809, 458759, 4, 1507345, 458759, 4, 1572881, 458759, 4, 1638417, 458759, 4, 1703953, 458759, 4, 1769489, 458759, 9, 65554, 524295, 3, 196626, 655367, 2, 1769490, 524295, 9, 65555, 524295, 3, 196627, 655367, 2, 1769491, 524295, 9, 65556, 524295, 3, 196628, 655367, 2, 1769492, 524295, 9, 65557, 524295, 3, 196629, 655367, 2, 1769493, 524295, 9, 65558, 524295, 3, 196630, 655367, 2, 1769494, 524295, 9, 65559, 524295, 3, 196631, 655367, 2, 1769495, 524295, 9, 65560, 524295, 3, 196632, 655367, 2, 1769496, 458759, 7, 1835032, 458759, 9, 65561, 524295, 3, 196633, 655367, 2, 1835033, 524295, 9, 65562, 524295, 3, 196634, 655367, 2, 1835034, 524295, 9, 65563, 524295, 3, 196635, 655367, 2, 1835035, 524295, 9, 65564, 524295, 3, 196636, 655367, 2, 1769500, 589831, 7, 1835036, 589831, 9, 65565, 524295, 3, 196637, 655367, 2, 1769501, 524295, 9, 65566, 524295, 3, 196638, 655367, 2, 1769502, 524295, 9, 65567, 524295, 3, 196639, 655367, 2, 1769503, 524295, 9, 65568, 589831, 3, 131104, 589831, 4, 196640, 589831, 4, 262176, 589831, 4, 327712, 589831, 4, 393248, 589831, 4, 458784, 589831, 5, 720928, 589831, 7, 786464, 589831, 4, 852000, 589831, 4, 917536, 589831, 4, 983072, 589831, 4, 1048608, 589831, 5, 1310752, 589831, 7, 1376288, 589831, 4, 1441824, 589831, 4, 1507360, 589831, 4, 1572896, 589831, 4, 1638432, 589831, 4, 1703968, 589831, 4, 1769504, 589831, 9)
 layer_3/tile_data = PackedInt32Array(262163, 65542, 10, 1245203, 131076, 1, 1310739, 196610, 2, 1441811, 196610, 2, 1572883, 131076, 1, 327701, 131076, 1, 589846, 131074, 3, 655382, 131074, 3, 524311, 131074, 4, 589847, 196610, 2, 720919, 65538, 4, 983063, 65538, 7, 327704, 131076, 1, 1703960, 131076, 1, 524313, 131074, 4, 589849, 196610, 2, 720921, 65538, 4, 262171, 65538, 7, 589851, 65538, 3, 655387, 65538, 3, 983067, 65538, 7, 1245212, 131074, 5, 1310748, 196610, 2, 1441820, 196610, 2, 1572892, 65538, 5, 1703964, 131076, 1, 262174, 393221, 3, 1310750, 65538, 6, 1376286, 65538, 6, 1441822, 65538, 6, 1507358, 65538, 6)
 layer_4/tile_data = PackedInt32Array(196627, 65540, 1, 196628, 65540, 1, 196629, 65540, 1, 196636, 65540, 1, 196637, 65540, 1, 196638, 65540, 1)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="Character" parent="." instance=ExtResource("2_wfnsy")]
-position = Vector2(427, 467)
 
 [node name="night" parent="." instance=ExtResource("4_tkxvh")]
 position = Vector2(0, -1)

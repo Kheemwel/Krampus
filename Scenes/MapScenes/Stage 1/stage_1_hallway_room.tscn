@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5llqnd5qnudy"]
+[gd_scene load_steps=10 format=3 uid="uid://c5llqnd5qnudy"]
 
-[ext_resource type="PackedScene" uid="uid://brcrlfocx6ike" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_jkidl"]
+[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_jkidl"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_tbvjx"]
-[ext_resource type="PackedScene" path="res://Scenes/ComponentScenes/character.tscn" id="2_jjlf4"]
-[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="3_2yieo"]
-[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_70sdy"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_jjlf4"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="4_g3md7"]
+[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_70sdy"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="5_g4l8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1juy"]
