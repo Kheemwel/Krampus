@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cb0rvri0p6cax"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dk625plvqv05w"]
 
 [ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="1_5iamy"]
 [ext_resource type="Texture2D" uid="uid://dp1ti2swwshjd" path="res://Assets/Sprites/buttons-resized.png" id="2_r3u0w"]

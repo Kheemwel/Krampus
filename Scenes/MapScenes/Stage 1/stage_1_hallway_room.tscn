@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5llqnd5qnudy"]
+[gd_scene load_steps=9 format=3 uid="uid://c5llqnd5qnudy"]
 
-[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_jkidl"]
+[ext_resource type="PackedScene" uid="uid://brcrlfocx6ike" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_jkidl"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_tbvjx"]
-[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_jjlf4"]
+[ext_resource type="PackedScene" path="res://Scenes/ComponentScenes/character.tscn" id="2_jjlf4"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="3_2yieo"]
+[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_70sdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_warvn"]
 size = Vector2(15.5, 51)
@@ -17,6 +18,20 @@ size = Vector2(50, 18)
 [node name="stage_1_hallway_room" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_tbvjx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="joystick" parent="CanvasLayer" instance=ExtResource("5_70sdy")]
+anchors_preset = -1
+anchor_left = 0.138
+anchor_top = 0.776
+anchor_right = 0.138
+anchor_bottom = 0.776
+offset_left = 0.359985
+offset_top = 0.279968
+offset_right = 0.359985
+offset_bottom = 0.279968
+metadata/_edit_use_anchors_ = true
 
 [node name="Tilemap" parent="." instance=ExtResource("1_jkidl")]
 layer_0/tile_data = PackedInt32Array(65537, 196609, 2, 65538, 196609, 2, 65539, 196609, 2, 65540, 196609, 2, 65541, 196609, 2, 65542, 196609, 2, 65543, 196609, 2, 65544, 196609, 2, 65545, 196609, 2, 65546, 196609, 2, 65548, 196609, 2, 65547, 196609, 2, 131073, 196609, 2, 196609, 196609, 2, 131074, 196609, 2, 196610, 196609, 2, 131075, 196609, 2, 196611, 196609, 2, 131076, 196609, 2, 196612, 196609, 2, 131077, 196609, 2, 196613, 196609, 2, 131078, 196609, 2, 196614, 196609, 2, 131079, 196609, 2, 196615, 196609, 2, 131080, 196609, 2, 196616, 196609, 2, 131081, 196609, 2, 196617, 196609, 2, 131082, 196609, 2, 196618, 196609, 2, 131083, 196609, 2, 196619, 196609, 2, 131084, 196609, 2, 196620, 196609, 2, 65549, 196609, 2, 131085, 196609, 2, 196621, 196609, 2, 262157, 196609, 2, 262156, 196609, 2, 262155, 196609, 2, 327692, 196609, 2, 327693, 196609, 2, 393229, 196609, 2, 393228, 196609, 2, 524299, 196609, 2, 589835, 196609, 2, 655371, 196609, 2, 720907, 196609, 2, 786443, 196609, 2, 851979, 196609, 2, 917515, 196609, 2, 983051, 196609, 2, 1048587, 196609, 2, 1114123, 196609, 2, 1114124, 196609, 2, 1048588, 196609, 2, 983052, 196609, 2, 917516, 196609, 2, 851980, 196609, 2, 786444, 196609, 2, 720908, 196609, 2, 655372, 196609, 2, 589836, 196609, 2, 524300, 196609, 2, 458764, 196609, 2, 458765, 196609, 2, 524301, 196609, 2, 589837, 196609, 2, 655373, 196609, 2, 720909, 196609, 2, 786445, 196609, 2, 851981, 196609, 2, 917517, 196609, 2, 983053, 196609, 2, 1048589, 196609, 2, 1114125, 196609, 2, 327691, 196609, 2, 393227, 196609, 2, 458763, 196609, 2, 131071, 196609, 2, 65536, 196609, 2, 131072, 196609, 2, 196608, 196609, 2, 262143, 196609, 2, 196607, 196609, 2, 524298, 196609, 2, 589834, 196609, 2)

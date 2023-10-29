@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3gpl1wrbwos0"]
+[gd_scene load_steps=5 format=3 uid="uid://ddorbemrt3yna"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/joystick.gd" id="1_42xe4"]
 [ext_resource type="Texture2D" uid="uid://b2wbjvqeccenj" path="res://Assets/Sprites/Ring.png" id="2_15vrg"]
@@ -21,11 +21,10 @@ script = ExtResource("4_euyot")
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -29.0
-offset_top = -29.0
-offset_right = 29.0
-offset_bottom = 29.0
+offset_left = -112.0
+offset_top = -115.0
+offset_right = 115.0
+offset_bottom = 113.0
 
 [connection signal="button_down" from="Button" to="knob" method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="knob" method="_on_button_button_up"]
