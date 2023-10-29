@@ -1,70 +1,62 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5llqnd5qnudy"]
+[gd_scene load_steps=9 format=3 uid="uid://c5llqnd5qnudy"]
 
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_jkidl"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_tbvjx"]
 [ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_jjlf4"]
-[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="3_2yieo"]
+[ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="4_g3md7"]
+[ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="5_g4l8e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_warvn"]
-size = Vector2(15.5, 51)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1juy"]
+size = Vector2(20, 52)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4re5"]
-size = Vector2(14.5, 35)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw8tv"]
+size = Vector2(20, 36)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlurj"]
-size = Vector2(50, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uomgm"]
+size = Vector2(52, 20)
 
 [node name="stage_1_hallway_room" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_tbvjx")
 
 [node name="Tilemap" parent="." instance=ExtResource("1_jkidl")]
-layer_0/tile_data = PackedInt32Array(65537, 196609, 2, 65538, 196609, 2, 65539, 196609, 2, 65540, 196609, 2, 65541, 196609, 2, 65542, 196609, 2, 65543, 196609, 2, 65544, 196609, 2, 65545, 196609, 2, 65546, 196609, 2, 65548, 196609, 2, 65547, 196609, 2, 131073, 196609, 2, 196609, 196609, 2, 131074, 196609, 2, 196610, 196609, 2, 131075, 196609, 2, 196611, 196609, 2, 131076, 196609, 2, 196612, 196609, 2, 131077, 196609, 2, 196613, 196609, 2, 131078, 196609, 2, 196614, 196609, 2, 131079, 196609, 2, 196615, 196609, 2, 131080, 196609, 2, 196616, 196609, 2, 131081, 196609, 2, 196617, 196609, 2, 131082, 196609, 2, 196618, 196609, 2, 131083, 196609, 2, 196619, 196609, 2, 131084, 196609, 2, 196620, 196609, 2, 65549, 196609, 2, 131085, 196609, 2, 196621, 196609, 2, 262157, 196609, 2, 262156, 196609, 2, 262155, 196609, 2, 327692, 196609, 2, 327693, 196609, 2, 393229, 196609, 2, 393228, 196609, 2, 524299, 196609, 2, 589835, 196609, 2, 655371, 196609, 2, 720907, 196609, 2, 786443, 196609, 2, 851979, 196609, 2, 917515, 196609, 2, 983051, 196609, 2, 1048587, 196609, 2, 1114123, 196609, 2, 1114124, 196609, 2, 1048588, 196609, 2, 983052, 196609, 2, 917516, 196609, 2, 851980, 196609, 2, 786444, 196609, 2, 720908, 196609, 2, 655372, 196609, 2, 589836, 196609, 2, 524300, 196609, 2, 458764, 196609, 2, 458765, 196609, 2, 524301, 196609, 2, 589837, 196609, 2, 655373, 196609, 2, 720909, 196609, 2, 786445, 196609, 2, 851981, 196609, 2, 917517, 196609, 2, 983053, 196609, 2, 1048589, 196609, 2, 1114125, 196609, 2, 327691, 196609, 2, 393227, 196609, 2, 458763, 196609, 2, 131071, 196609, 2, 65536, 196609, 2, 131072, 196609, 2, 196608, 196609, 2, 262143, 196609, 2, 196607, 196609, 2, 524298, 196609, 2, 589834, 196609, 2)
-layer_2/tile_data = PackedInt32Array(262144, 655367, 7, -65536, 655367, 2, -65535, 655367, 2, -65534, 655367, 2, -65533, 655367, 2, -65532, 655367, 2, -65531, 655367, 2, -65530, 655367, 2, -65529, 655367, 2, -65528, 655367, 2, -65527, 655367, 2, -65526, 655367, 2, -65525, 655367, 2, -65524, 655367, 2, -65523, 655367, 2, -196608, 524295, 3, -196607, 524295, 3, -196606, 524295, 3, -196605, 524295, 3, -196604, 524295, 3, -196603, 524295, 3, -196602, 524295, 3, -196601, 524295, 3, -196600, 524295, 3, -196599, 524295, 3, -196598, 524295, 3, -196597, 524295, 3, -196596, 524295, 3, -196595, 524295, 3, -196594, 589831, 3, -131073, 458759, 3, -65537, 458759, 4, -1, 458759, 4, 65535, 458759, 5, 262145, 524295, 9, 262146, 524295, 9, 262147, 524295, 9, 262148, 524295, 9, 262149, 524295, 9, 262150, 524295, 9, 262151, 524295, 9, 262152, 524295, 9, 262153, 524295, 9, 262154, 458759, 7, -131058, 589831, 4, -65522, 589831, 4, 14, 589831, 4, 65550, 589831, 4, 131086, 589831, 4, 196622, 589831, 4, 262158, 589831, 4, 327694, 589831, 4, 393230, 589831, 4, 458766, 589831, 4, 524302, 589831, 4, 589838, 589831, 4, 655374, 589831, 4, 720910, 589831, 4, 786446, 589831, 4, 851982, 589831, 4, 917518, 589831, 4, 983054, 589831, 4, 1048590, 589831, 4, 1114126, 589831, 4, 1114122, 458759, 4, 1048586, 458759, 4, 983050, 458759, 4, 917514, 458759, 4, 851978, 458759, 4, 786442, 458759, 4, 720906, 458759, 4, 655370, 458759, 7, 458762, 458759, 5, 393226, 458759, 4, 327690, 458759, 4, 327679, 524295, 9)
+layer_0/tile_data = PackedInt32Array(262159, 196609, 2, 327695, 196609, 2, 393231, 196609, 2, 262160, 196609, 2, 327696, 196609, 2, 393232, 196609, 2, 262161, 196609, 2, 327697, 196609, 2, 393233, 196609, 2, 262162, 196609, 2, 327698, 196609, 2, 393234, 196609, 2, 262163, 196609, 2, 327699, 196609, 2, 393235, 196609, 2, 262164, 196609, 2, 327700, 196609, 2, 393236, 196609, 2, 262165, 196609, 2, 327701, 196609, 2, 393237, 196609, 2, 262166, 196609, 2, 327702, 196609, 2, 393238, 196609, 2, 262167, 196609, 2, 327703, 196609, 2, 393239, 196609, 2, 262168, 196609, 2, 327704, 196609, 2, 393240, 196609, 2, 262169, 196609, 2, 327705, 196609, 2, 393241, 196609, 2, 262170, 196609, 2, 327706, 196609, 2, 393242, 196609, 2, 720922, 196609, 2, 786458, 196609, 2, 262171, 196609, 2, 327707, 196609, 2, 393243, 196609, 2, 458779, 196609, 2, 524315, 196609, 2, 589851, 196609, 2, 655387, 196609, 2, 720923, 196609, 2, 786459, 196609, 2, 851995, 196609, 2, 917531, 196609, 2, 983067, 196609, 2, 1048603, 196609, 2, 1114139, 196609, 2, 1179675, 196609, 2, 1245211, 196609, 2, 1310747, 196609, 2, 262172, 196609, 2, 327708, 196609, 2, 393244, 196609, 2, 458780, 196609, 2, 524316, 196609, 2, 589852, 196609, 2, 655388, 196609, 2, 720924, 196609, 2, 786460, 196609, 2, 851996, 196609, 2, 917532, 196609, 2, 983068, 196609, 2, 1048604, 196609, 2, 1114140, 196609, 2, 1179676, 196609, 2, 1245212, 196609, 2, 1310748, 196609, 2, 262173, 196609, 2, 327709, 196609, 2, 393245, 196609, 2, 458781, 196609, 2, 524317, 196609, 2, 589853, 196609, 2, 655389, 196609, 2, 720925, 196609, 2, 786461, 196609, 2, 851997, 196609, 2, 917533, 196609, 2, 983069, 196609, 2, 1048605, 196609, 2, 1114141, 196609, 2, 1179677, 196609, 2, 1245213, 196609, 2, 1310749, 196609, 2)
+layer_2/tile_data = PackedInt32Array(15, 458759, 3, 65551, 458759, 4, 131087, 458759, 4, 196623, 458759, 5, 458767, 524295, 9, 16, 524295, 3, 131088, 655367, 2, 458768, 655367, 7, 17, 524295, 3, 131089, 655367, 2, 458769, 524295, 9, 18, 524295, 3, 131090, 655367, 2, 458770, 524295, 9, 19, 524295, 3, 131091, 655367, 2, 458771, 524295, 9, 20, 524295, 3, 131092, 655367, 2, 458772, 524295, 9, 21, 524295, 3, 131093, 655367, 2, 458773, 524295, 9, 22, 524295, 3, 131094, 655367, 2, 458774, 524295, 9, 23, 524295, 3, 131095, 655367, 2, 458775, 524295, 9, 24, 524295, 3, 131096, 655367, 2, 458776, 524295, 9, 25, 524295, 3, 131097, 655367, 2, 458777, 524295, 9, 26, 524295, 3, 131098, 655367, 2, 458778, 458759, 7, 524314, 458759, 4, 589850, 458759, 4, 655386, 458759, 5, 851994, 458759, 7, 917530, 458759, 4, 983066, 458759, 4, 1048602, 458759, 4, 1114138, 458759, 4, 1179674, 458759, 4, 1245210, 458759, 4, 1310746, 458759, 4, 27, 524295, 3, 131099, 655367, 2, 28, 524295, 3, 131100, 655367, 2, 29, 524295, 3, 131101, 655367, 2, 30, 589831, 3, 65566, 589831, 4, 131102, 589831, 4, 196638, 589831, 4, 262174, 589831, 4, 327710, 589831, 4, 393246, 589831, 4, 458782, 589831, 4, 524318, 589831, 4, 589854, 589831, 4, 655390, 589831, 4, 720926, 589831, 4, 786462, 589831, 4, 851998, 589831, 4, 917534, 589831, 4, 983070, 589831, 4, 1048606, 589831, 4, 1114142, 589831, 4, 1179678, 589831, 4, 1245214, 589831, 4, 1310750, 589831, 4)
 layer_3/name = "OnWall Layer"
 layer_3/y_sort_enabled = false
-layer_3/tile_data = PackedInt32Array(-65526, 65540, 1, -65532, 65540, 1)
+layer_3/tile_data = PackedInt32Array(131091, 65540, 1, 131097, 65540, 1)
 layer_4/name = "OnGround Layer"
 layer_4/y_sort_enabled = true
-layer_4/tile_data = PackedInt32Array(65539, 131076, 1, 65547, 131076, 1)
+layer_4/tile_data = PackedInt32Array(262162, 131076, 1, 262170, 131076, 1)
 
 [node name="Character" parent="." instance=ExtResource("2_jjlf4")]
-position = Vector2(-7, 43)
+position = Vector2(251, 94)
 
-[node name="stage_1_living_dining_room" type="Area2D" parent="."]
-script = ExtResource("3_2yieo")
+[node name="night" parent="." instance=ExtResource("4_g3md7")]
+
+[node name="stage_1_living_dining_room" parent="." instance=ExtResource("5_g4l8e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_living_dining_room"]
-position = Vector2(-23, 42)
-shape = SubResource("RectangleShape2D_warvn")
+position = Vector2(233, 93)
+shape = SubResource("RectangleShape2D_e1juy")
 
-[node name="stage_1_comfort_room" type="Area2D" parent="."]
-position = Vector2(0, 4)
-script = ExtResource("3_2yieo")
+[node name="stage_1_comfort_room" parent="." instance=ExtResource("5_g4l8e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_comfort_room"]
-position = Vector2(154.75, 148.5)
-shape = SubResource("RectangleShape2D_q4re5")
+position = Vector2(410, 203)
+shape = SubResource("RectangleShape2D_kw8tv")
 
-[node name="stage_1_library_room" type="Area2D" parent="."]
-script = ExtResource("3_2yieo")
+[node name="stage_1_library_room" parent="." instance=ExtResource("5_g4l8e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_library_room"]
-position = Vector2(202, 313)
-shape = SubResource("RectangleShape2D_dlurj")
+position = Vector2(460, 365)
+shape = SubResource("RectangleShape2D_uomgm")
 
 [node name="stage_1_living_dining_room_pos" type="Marker2D" parent="."]
-position = Vector2(-7, 43)
+position = Vector2(251, 94)
 
 [node name="stage_1_comfort_room_pos" type="Marker2D" parent="."]
-position = Vector2(169, 152)
+position = Vector2(427, 203)
 
 [node name="stage_1_library_room_pos" type="Marker2D" parent="."]
-position = Vector2(202, 297)
-
-[connection signal="body_entered" from="stage_1_living_dining_room" to="stage_1_living_dining_room" method="_on_body_entered"]
-[connection signal="body_exited" from="stage_1_living_dining_room" to="stage_1_living_dining_room" method="_on_body_exited"]
-[connection signal="body_entered" from="stage_1_comfort_room" to="stage_1_comfort_room" method="_on_body_entered"]
-[connection signal="body_exited" from="stage_1_comfort_room" to="stage_1_comfort_room" method="_on_body_exited"]
-[connection signal="body_entered" from="stage_1_library_room" to="stage_1_library_room" method="_on_body_entered"]
-[connection signal="body_exited" from="stage_1_library_room" to="stage_1_library_room" method="_on_body_exited"]
+position = Vector2(460, 348)
