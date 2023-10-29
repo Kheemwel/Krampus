@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpdrhrfh3cwjr"]
+
+[ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="1_2fm7y"]
+
+[node name="light" type="PointLight2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_2fm7y")
