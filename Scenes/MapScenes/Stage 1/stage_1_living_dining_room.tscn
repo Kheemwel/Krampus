@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://gh8kkycbud0o"]
 
-[ext_resource type="Script" path="res://Scripts/Character Scripts/door_position.gd" id="1_jald8"]
-[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/World Scenes/tilemap.tscn" id="1_qdgvm"]
-[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/Character Scenes/character.tscn" id="2_wfnsy"]
-[ext_resource type="Script" path="res://Scripts/World Scripts/change_room.gd" id="3_ga8ts"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_benoc"]
+[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_qdgvm"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_wfnsy"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="4_stmwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4qj8"]
 size = Vector2(8, 53.25)
@@ -13,7 +13,7 @@ size = Vector2(8, 52)
 
 [node name="stage_1_living_dining_room" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_jald8")
+script = ExtResource("1_benoc")
 
 [node name="Tilemap" parent="." instance=ExtResource("1_qdgvm")]
 position = Vector2(0, -1)
@@ -30,7 +30,7 @@ position = Vector2(153, 399)
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="stage_1_hallway_room" type="Area2D" parent="."]
-script = ExtResource("3_ga8ts")
+script = ExtResource("4_stmwt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_hallway_room"]
 position = Vector2(262, 244.375)
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_h4qj8")
 
 [node name="stage_1_kitchen_room" type="Area2D" parent="."]
 position = Vector2(0, -1)
-script = ExtResource("3_ga8ts")
+script = ExtResource("4_stmwt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_kitchen_room"]
 position = Vector2(261, 93)

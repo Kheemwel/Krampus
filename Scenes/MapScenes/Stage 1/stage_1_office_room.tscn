@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwjon7ci3ctfj"]
 
-[ext_resource type="Script" path="res://Scripts/Character Scripts/door_position.gd" id="1_br6qa"]
-[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/World Scenes/tilemap.tscn" id="1_pi0bo"]
-[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/Character Scenes/character.tscn" id="2_82jm0"]
-[ext_resource type="Script" path="res://Scripts/World Scripts/change_room.gd" id="4_g05bg"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_br6qa"]
+[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_pi0bo"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_82jm0"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="4_g05bg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bahso"]
 size = Vector2(66, 16)

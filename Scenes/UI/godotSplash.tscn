@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehvk3qabl8a3"]
+
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/splash_screen.gd" id="1_6tonq"]
+[ext_resource type="Texture2D" uid="uid://bdpolwllv21ix" path="res://Assets/Sprites/Godot_icon 1.png" id="1_exuci"]
+
+[node name="GodotSplashScreen" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6tonq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_exuci")

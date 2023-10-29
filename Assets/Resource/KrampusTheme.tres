@@ -1,0 +1,62 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cb0rvri0p6cax"]
+
+[ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="1_5iamy"]
+[ext_resource type="Texture2D" uid="uid://dp1ti2swwshjd" path="res://Assets/Sprites/buttons-resized.png" id="2_r3u0w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eolx"]
+atlas = ExtResource("2_r3u0w")
+region = Rect2(2, 96, 124, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmaay"]
+texture = SubResource("AtlasTexture_8eolx")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5bg3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylh34"]
+atlas = ExtResource("2_r3u0w")
+region = Rect2(2, 32, 124, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ydewv"]
+texture = SubResource("AtlasTexture_ylh34")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02r7e"]
+atlas = ExtResource("2_r3u0w")
+region = Rect2(2, 64, 124, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xdi45"]
+texture = SubResource("AtlasTexture_02r7e")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ientk"]
+atlas = ExtResource("2_r3u0w")
+region = Rect2(2, 0, 124, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj6ao"]
+texture = SubResource("AtlasTexture_ientk")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_5iamy")
+Button/styles/disabled = SubResource("StyleBoxTexture_jmaay")
+Button/styles/focus = SubResource("StyleBoxEmpty_i5bg3")
+Button/styles/hover = SubResource("StyleBoxTexture_ydewv")
+Button/styles/normal = SubResource("StyleBoxTexture_xdi45")
+Button/styles/pressed = SubResource("StyleBoxTexture_bj6ao")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/fonts/font = ExtResource("1_5iamy")
+MyButton/base_type = &"Button"

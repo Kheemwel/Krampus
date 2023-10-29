@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn6sol86v5sg4"]
 
-[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/World Scenes/tilemap.tscn" id="2_mkwmn"]
-[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/Character Scenes/character.tscn" id="3_0noit"]
-[ext_resource type="Script" path="res://Scripts/World Scripts/change_room.gd" id="4_wjuh1"]
+[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="2_mkwmn"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="3_0noit"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="3_ybs6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k50ot"]
 size = Vector2(12, 35)
@@ -20,7 +20,7 @@ layer_3/tile_data = PackedInt32Array(262145, 131076, 1, 65540, 131076, 1, 65543,
 position = Vector2(168, 58)
 
 [node name="stage_1_hallway_room" type="Area2D" parent="."]
-script = ExtResource("4_wjuh1")
+script = ExtResource("3_ybs6o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stage_1_hallway_room"]
 position = Vector2(183, 50.5)

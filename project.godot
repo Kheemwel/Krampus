@@ -12,19 +12,23 @@ config_version=5
 
 config/name="Krampus"
 config/tags=PackedStringArray("project")
-run/main_scene="res://Scenes/splash_screen_manager.tscn"
+run/main_scene="res://Scenes/UI/splash_screen_manager.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-global="*res://Scripts/global.gd"
-Transition="*res://Scenes/World Scenes/transition.tscn"
+global="*res://Scripts/SceneScripts/global.gd"
+Transition="*res://Scenes/UI/transition.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[gui]
+
+theme/custom="res://Assets/Resource/KrampusTheme.tres"
 
 [input]
 
