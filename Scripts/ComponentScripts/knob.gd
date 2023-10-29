@@ -4,7 +4,7 @@ extends Sprite2D
 
 var pressing = false
 
-@export var maxLength : int = 30
+@export var maxLength : int = 90
 @export var deadzone : int = 5
 # Called when the node enters the scene tree for the first time.
 func _ready():

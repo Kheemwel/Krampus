@@ -11,6 +11,7 @@ func _physics_process(delta):
 func move():
 	var direction = joystick.posVector
 	if direction:
+		direction = direction.normalized()
 		velocity = direction * speed
 	else:
 		velocity = Vector2(0,0)

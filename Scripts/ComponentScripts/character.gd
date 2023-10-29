@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var joystick = $"../CanvasLayer/joystick"
+
 @export var MAX_SPEED: int = 100
 @export var ACCELERATION: int = 1500
 @export var FRICTION: int = 1200
@@ -18,17 +20,23 @@ func get_input_axis():
 	return axis.normalized()
 
 func move(delta):
-	axis = get_input_axis()
-
-	if Input.is_action_pressed("ui_accept"):
-		MAX_SPEED = originalMaxSpeed * 2  # Double the MAX_SPEED when Shift is pressed
+	var axis = joystick.posVector
+	if axis:
+		axis = axis.normalized()
+		velocity = axis * MAX_SPEED
 	else:
-		MAX_SPEED = originalMaxSpeed  # Reset MAX_SPEED to its original value
-
-	if axis == Vector2.ZERO:
-		apply_friction(FRICTION * delta)
-	else:
-		apply_movement(axis * ACCELERATION * delta)
+		velocity = Vector2(0,0)
+#	axis = get_input_axis()
+#
+#	if Input.is_action_pressed("ui_accept"):
+#		MAX_SPEED = originalMaxSpeed * 2  # Double the MAX_SPEED when Shift is pressed
+#	else:
+#		MAX_SPEED = originalMaxSpeed  # Reset MAX_SPEED to its original value
+#
+#	if axis == Vector2.ZERO:
+#		apply_friction(FRICTION * delta)
+#	else:
+#		apply_movement(axis * ACCELERATION * delta)
 
 	move_and_slide()
 

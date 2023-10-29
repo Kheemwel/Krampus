@@ -1,7 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bn6sol86v5sg4"]
 
-[ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="2_mkwmn"]
-[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="3_0noit"]
+[ext_resource type="PackedScene" uid="uid://brcrlfocx6ike" path="res://Scenes/ComponentScenes/tilemap.tscn" id="2_mkwmn"]
+[ext_resource type="PackedScene" path="res://Scenes/ComponentScenes/character.tscn" id="3_0noit"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/change_room.gd" id="3_ybs6o"]
+[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="4_kjr1t"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="3_36qod"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="4_n6vvg"]
 
@@ -10,6 +12,20 @@ size = Vector2(22.505, 1.99532)
 
 [node name="stage_1_comfort_room" type="Node2D"]
 y_sort_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="joystick" parent="CanvasLayer" instance=ExtResource("4_kjr1t")]
+anchors_preset = -1
+anchor_left = 0.138
+anchor_top = 0.776
+anchor_right = 0.138
+anchor_bottom = 0.776
+offset_left = 0.359985
+offset_top = 0.279968
+offset_right = 0.359985
+offset_bottom = 0.279968
+metadata/_edit_use_anchors_ = true
 
 [node name="Tilemap" parent="." instance=ExtResource("2_mkwmn")]
 layer_0/tile_data = PackedInt32Array(917518, 655361, 2, 983054, 655361, 2, 1048590, 655361, 2, 1114126, 655361, 2, 917519, 655361, 2, 983055, 655361, 2, 1048591, 655361, 2, 1114127, 655361, 2, 917520, 655361, 2, 983056, 655361, 2, 1048592, 655361, 2, 1114128, 655361, 2, 917521, 655361, 2, 983057, 655361, 2, 1048593, 655361, 2, 1114129, 655361, 2, 917522, 655361, 2, 983058, 655361, 2, 1048594, 655361, 2, 1114130, 655361, 2, 917523, 655361, 2, 983059, 655361, 2, 1048595, 655361, 2, 1114131, 655361, 2, 917524, 655361, 2, 983060, 655361, 2, 1048596, 655361, 2, 1114132, 655361, 2, 917525, 655361, 2, 983061, 655361, 2, 1048597, 655361, 2, 1114133, 655361, 2, 917526, 655361, 2, 983062, 655361, 2, 1048598, 655361, 2, 1114134, 655361, 2, 983063, 589825, 2, 1048599, 589825, 2)
