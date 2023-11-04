@@ -1,9 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://d0iilxsiusx6u"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/character.gd" id="1_psmm1"]
-[ext_resource type="Texture2D" uid="uid://c1mkatx0p4n72" path="res://Assets/Sprites/character_.png" id="2_6cyaj"]
+[ext_resource type="Texture2D" uid="uid://btxwq0h4mmdhn" path="res://Assets/Sprites/Player.png" id="2_gan20"]
 [ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="3_43nd8"]
-[ext_resource type="PackedScene" uid="uid://cau5ul7kx2txy" path="res://Scenes/ComponentScenes/joytstick_v_2.tscn" id="4_qiggr"]
 
 [sub_resource type="Animation" id="Animation_7fs2d"]
 length = 0.001
@@ -66,8 +65,9 @@ script = ExtResource("1_psmm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-scale = Vector2(2, 1.89)
-texture = ExtResource("2_6cyaj")
+scale = Vector2(2, 1.889)
+texture = ExtResource("2_gan20")
+region_enabled = true
 region_rect = Rect2(21, 21, 17, 24)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
@@ -89,12 +89,6 @@ scale = Vector2(0.61875, 0.56875)
 energy = 0.75
 blend_mode = 2
 texture = ExtResource("3_43nd8")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="joystick_v2" parent="CanvasLayer" instance=ExtResource("4_qiggr")]
-position = Vector2(171, 568)
-scale = Vector2(2, 2)
 
 [node name="Interaction" type="Node2D" parent="."]
 z_index = 1
@@ -120,4 +114,3 @@ vertical_alignment = 1
 
 [connection signal="area_entered" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_exited"]
-

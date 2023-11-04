@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_82jm0"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="4_h2hbl"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="4_qaqaa"]
+[ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_nyx5g"]
 [ext_resource type="PackedScene" uid="uid://bykfyfkwfjorh" path="res://InteractactionArea/interact_area.tscn" id="7_g5qif"]
 [ext_resource type="PackedScene" uid="uid://bomps03hw42pf" path="res://Chat Box/textbox.tscn" id="8_smc1d"]
 
