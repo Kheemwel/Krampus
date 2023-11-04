@@ -1,4 +1,4 @@
 [gd_scene format=3 uid="uid://bq5wwn3fnb8cv"]
 
 [node name="night" type="CanvasModulate"]
-color = Color(0.0784314, 0.0784314, 0.156863, 1)
+color = Color(0.160784, 0.160784, 0.160784, 1)
