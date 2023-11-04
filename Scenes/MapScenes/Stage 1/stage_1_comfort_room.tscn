@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn6sol86v5sg4"]
+[gd_scene load_steps=9 format=3 uid="uid://bn6sol86v5sg4"]
 
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="2_mkwmn"]
 [ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="3_0noit"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="3_36qod"]
 [ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="4_kjr1t"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="4_n6vvg"]
+[ext_resource type="PackedScene" uid="uid://bykfyfkwfjorh" path="res://InteractactionArea/interact_area.tscn" id="6_m3gjj"]
+[ext_resource type="PackedScene" uid="uid://bomps03hw42pf" path="res://Chat Box/textbox.tscn" id="7_bog7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3ote"]
 size = Vector2(22.505, 1.99532)
@@ -26,6 +28,13 @@ offset_right = 0.359985
 offset_bottom = 0.279968
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1034.0
+offset_top = 507.0
+offset_right = 1159.0
+offset_bottom = 621.0
+size_flags_stretch_ratio = 5.85
+
 [node name="Tilemap" parent="." instance=ExtResource("2_mkwmn")]
 layer_0/tile_data = PackedInt32Array(917518, 655361, 2, 983054, 655361, 2, 1048590, 655361, 2, 1114126, 655361, 2, 917519, 655361, 2, 983055, 655361, 2, 1048591, 655361, 2, 1114127, 655361, 2, 917520, 655361, 2, 983056, 655361, 2, 1048592, 655361, 2, 1114128, 655361, 2, 917521, 655361, 2, 983057, 655361, 2, 1048593, 655361, 2, 1114129, 655361, 2, 917522, 655361, 2, 983058, 655361, 2, 1048594, 655361, 2, 1114130, 655361, 2, 917523, 655361, 2, 983059, 655361, 2, 1048595, 655361, 2, 1114131, 655361, 2, 917524, 655361, 2, 983060, 655361, 2, 1048596, 655361, 2, 1114132, 655361, 2, 917525, 655361, 2, 983061, 655361, 2, 1048597, 655361, 2, 1114133, 655361, 2, 917526, 655361, 2, 983062, 655361, 2, 1048598, 655361, 2, 1114134, 655361, 2, 983063, 589825, 2, 1048599, 589825, 2)
 layer_1/tile_data = PackedInt32Array(1114126, 65538, 2, 1114134, 65538, 2, 917525, 65538, 2, 917521, 65538, 2)
@@ -45,3 +54,42 @@ position = Vector2(0, -1)
 position = Vector2(394, 271)
 scale = Vector2(0.64166, -18.0422)
 shape = SubResource("RectangleShape2D_m3ote")
+
+[node name="Interaction Area" type="Node" parent="."]
+
+[node name="InteractBathtub" parent="Interaction Area" instance=ExtResource("6_m3gjj")]
+position = Vector2(242, 242)
+rotation = -1.52367
+scale = Vector2(1.815, 1.815)
+Interact_label = "Interact"
+Interact_type = "print_text"
+Interact_value = "Bathtub"
+
+[node name="InteractSink" parent="Interaction Area" instance=ExtResource("6_m3gjj")]
+position = Vector2(307, 244)
+rotation = -1.52367
+scale = Vector2(1.795, 2.465)
+Interact_label = "Interact"
+Interact_type = "print_text"
+Interact_value = "Sink"
+
+[node name="Interactdrawer" parent="Interaction Area" instance=ExtResource("6_m3gjj")]
+position = Vector2(331, 243)
+rotation = -1.52367
+scale = Vector2(1.215, 1.24)
+Interact_label = "Interact"
+Interact_type = "print_text"
+Interact_value = "drawer"
+
+[node name="Interaction Chat" parent="." instance=ExtResource("7_bog7y")]
+
+[node name="reset button" type="Button" parent="Interaction Chat"]
+modulate = Color(1, 1, 1, 0.654902)
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 20.0
+offset_bottom = 15.0
+scale = Vector2(64.0925, 48.104)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="Character" method="_on_button_pressed"]
+[connection signal="pressed" from="Interaction Chat/reset button" to="Character" method="_on_reset_button_pressed"]

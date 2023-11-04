@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b30ctvl4d2mn2"]
+[gd_scene load_steps=10 format=3 uid="uid://b30ctvl4d2mn2"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_0mg27"]
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_oo1mt"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="2_wq04j"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="4_76kkx"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="5_rsx4u"]
+[ext_resource type="PackedScene" uid="uid://bykfyfkwfjorh" path="res://InteractactionArea/interact_area.tscn" id="7_xx8ht"]
+[ext_resource type="PackedScene" uid="uid://bomps03hw42pf" path="res://Chat Box/textbox.tscn" id="8_rmp83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_suuek"]
 size = Vector2(20, 51)
@@ -28,6 +30,13 @@ offset_right = 0.359985
 offset_bottom = 0.279968
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1034.0
+offset_top = 507.0
+offset_right = 1159.0
+offset_bottom = 621.0
+size_flags_stretch_ratio = 5.85
+
 [node name="Tilemap" parent="." instance=ExtResource("1_oo1mt")]
 layer_0/tile_data = PackedInt32Array(524301, 65537, 2, 589837, 65537, 2, 262158, 65537, 2, 327694, 65537, 2, 393230, 65537, 2, 458766, 65537, 2, 524302, 65537, 2, 589838, 65537, 2, 655374, 65537, 2, 720910, 65537, 2, 262159, 65537, 2, 327695, 65537, 2, 393231, 65537, 2, 458767, 65537, 2, 524303, 65537, 2, 589839, 65537, 2, 655375, 65537, 2, 720911, 65537, 2, 262160, 65537, 2, 327696, 65537, 2, 393232, 65537, 2, 458768, 65537, 2, 524304, 65537, 2, 589840, 65537, 2, 655376, 65537, 2, 720912, 65537, 2, 262161, 65537, 2, 327697, 65537, 2, 393233, 65537, 2, 458769, 65537, 2, 524305, 65537, 2, 589841, 65537, 2, 655377, 65537, 2, 720913, 65537, 2, 262162, 65537, 2, 327698, 65537, 2, 393234, 65537, 2, 458770, 65537, 2, 524306, 65537, 2, 589842, 65537, 2, 655378, 65537, 2, 720914, 65537, 2, 262163, 65537, 2, 327699, 65537, 2, 393235, 65537, 2, 458771, 65537, 2, 524307, 65537, 2, 589843, 65537, 2, 655379, 65537, 2, 720915, 65537, 2, 262164, 65537, 2, 327700, 65537, 2, 393236, 65537, 2, 458772, 65537, 2, 524308, 65537, 2, 589844, 65537, 2, 655380, 65537, 2, 720916, 65537, 2, 262165, 65537, 2, 327701, 65537, 2, 393237, 65537, 2, 458773, 65537, 2, 524309, 65537, 2, 589845, 65537, 2, 655381, 65537, 2, 720917, 65537, 2, 262166, 65537, 2, 327702, 65537, 2, 393238, 65537, 2, 458774, 65537, 2, 524310, 65537, 2, 589846, 65537, 2, 655382, 65537, 2, 720918, 65537, 2, 262167, 65537, 2, 327703, 65537, 2, 393239, 65537, 2, 458775, 65537, 2, 524311, 65537, 2, 589847, 65537, 2, 655383, 65537, 2, 720919, 65537, 2, 262168, 65537, 2, 327704, 65537, 2, 393240, 65537, 2, 458776, 65537, 2, 524312, 65537, 2, 589848, 65537, 2, 655384, 65537, 2, 720920, 65537, 2, 655373, 65537, 2, 786446, 65537, 2, 786447, 65537, 2, 786448, 65537, 2, 786449, 65537, 2, 786450, 65537, 2, 786451, 65537, 2, 786452, 65537, 2, 786453, 65537, 2, 786454, 65537, 2, 786455, 65537, 2, 786456, 65537, 2)
 layer_2/tile_data = PackedInt32Array(13, 458759, 3, 65549, 458759, 4, 131085, 458759, 4, 196621, 458759, 4, 262157, 458759, 4, 327693, 458759, 4, 393229, 458759, 4, 458765, 458759, 5, 720909, 458759, 7, 786445, 458759, 8, 851981, 458759, 9, 14, 524295, 3, 131086, 655367, 2, 851982, 524295, 9, 15, 524295, 3, 131087, 655367, 2, 851983, 524295, 9, 16, 524295, 3, 131088, 655367, 2, 851984, 524295, 9, 17, 524295, 3, 131089, 655367, 2, 851985, 524295, 9, 18, 524295, 3, 131090, 655367, 2, 851986, 524295, 9, 19, 524295, 3, 131091, 655367, 2, 851987, 524295, 9, 20, 524295, 3, 131092, 655367, 2, 851988, 524295, 9, 21, 524295, 3, 131093, 655367, 2, 851989, 524295, 9, 22, 524295, 3, 131094, 655367, 2, 851990, 524295, 9, 23, 524295, 3, 131095, 655367, 2, 851991, 524295, 9, 24, 524295, 3, 131096, 655367, 2, 851992, 524295, 9, 25, 589831, 3, 65561, 589831, 4, 131097, 589831, 4, 196633, 589831, 4, 262169, 589831, 4, 327705, 589831, 4, 393241, 589831, 4, 458777, 589831, 4, 524313, 589831, 4, 589849, 589831, 4, 655385, 589831, 4, 720921, 589831, 4, 786457, 589831, 4, 851993, 589831, 9)
@@ -47,3 +56,75 @@ shape = SubResource("RectangleShape2D_suuek")
 
 [node name="stage_1_living_dining_room_pos" type="Marker2D" parent="."]
 position = Vector2(218, 165)
+
+[node name="Interaction Area" type="Node" parent="."]
+
+[node name="Interaction Chair" type="Node" parent="Interaction Area"]
+
+[node name="InteractArea" parent="Interaction Area/Interaction Chair" instance=ExtResource("7_xx8ht")]
+position = Vector2(323, 127)
+rotation = -1.52367
+scale = Vector2(2.055, 3.965)
+Interact_label = "Interact"
+Interact_type = "chair"
+Interact_value = "Bathtub"
+
+[node name="InteractArea2" parent="Interaction Area/Interaction Chair" instance=ExtResource("7_xx8ht")]
+position = Vector2(283, 153)
+rotation = -1.52367
+scale = Vector2(4.16, 1.815)
+Interact_label = "Interact"
+Interact_type = "chair"
+Interact_value = "chair"
+
+[node name="InteractArea3" parent="Interaction Area/Interaction Chair" instance=ExtResource("7_xx8ht")]
+position = Vector2(322, 177)
+rotation = -1.52367
+scale = Vector2(2.055, 3.965)
+Interact_label = "Interact"
+Interact_type = "chair"
+Interact_value = "Bathtub"
+
+[node name="InteractArea4" parent="Interaction Area/Interaction Chair" instance=ExtResource("7_xx8ht")]
+position = Vector2(363, 152)
+rotation = -1.52367
+scale = Vector2(4.16, 1.815)
+Interact_label = "Interact"
+Interact_type = "chair"
+Interact_value = "chair"
+
+[node name="InteractSink" parent="Interaction Area" instance=ExtResource("7_xx8ht")]
+position = Vector2(290, 69)
+rotation = -1.52367
+scale = Vector2(2.055, 2.615)
+Interact_label = "Interact"
+Interact_type = "print_text"
+Interact_value = "sink"
+
+[node name="InteractRef" parent="Interaction Area" instance=ExtResource("7_xx8ht")]
+position = Vector2(347, 67)
+rotation = -1.52367
+scale = Vector2(2.09, 1.3)
+Interact_label = "Interact"
+Interact_type = "print_text"
+Interact_value = "refrigerator"
+
+[node name="Interactdrawer" parent="Interaction Area" instance=ExtResource("7_xx8ht")]
+position = Vector2(396, 67)
+rotation = -1.52367
+scale = Vector2(2.155, 1.485)
+Interact_label = "Interact"
+Interact_type = "print_text"
+Interact_value = "drawer"
+
+[node name="Interaction Chat" parent="." instance=ExtResource("8_rmp83")]
+
+[node name="reset button" type="Button" parent="Interaction Chat"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 20.0
+offset_bottom = 15.0
+scale = Vector2(64.0925, 48.104)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="Character" method="_on_button_pressed"]
+[connection signal="pressed" from="Interaction Chat/reset button" to="Character" method="_on_reset_button_pressed"]

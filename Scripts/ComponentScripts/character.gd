@@ -14,10 +14,13 @@ func _ready():
 
 func _physics_process(delta):
 	move(delta)
+	
+	
 
 func get_input_axis():
 	axis = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return axis.normalized()
+	
 
 func move(delta):
 	var axis = joystick.posVector
@@ -52,3 +55,43 @@ func apply_movement(accel):
 
 func character():
 	pass
+
+
+#interaction to object
+
+@onready var all_interaction = []
+@onready var interactionLabel = $"Interaction/Interact label"
+
+func _on_interaction_area_area_entered(area):
+	all_interaction.insert(0, area)
+	update_interactions()
+
+func _on_interaction_area_area_exited(area):
+	all_interaction.erase(area)
+	update_interactions()
+func update_interactions():
+	if all_interaction:
+		interactionLabel.text = all_interaction[0].Interact_label
+	else:
+		interactionLabel.text = ""
+
+func execute_interaction():
+	if all_interaction:
+		
+		var cur_interaction = all_interaction[0]
+		match cur_interaction.Interact_type:
+			"print_text" : $"../Interaction Chat"._add_text("there's nothing in the "+cur_interaction.Interact_value)
+			"chair" : $"../Interaction Chat"._add_text("I don't have time to relax")
+			"Item" : $"../Interaction Chat"._add_text("you take the "+cur_interaction.Interact_value)
+			"book" : $"../Interaction Chat"._add_text("I don't have time to read")
+			"bookshelf" : $"../Interaction Chat"._add_text("I don't have time to read")
+			"picture" : $"../Interaction Chat"._add_text("what a beautiful paint")
+
+
+func _on_button_pressed():
+	execute_interaction()
+	
+
+
+func _on_reset_button_pressed():
+	$"../Interaction Chat"._hide_textbox()
