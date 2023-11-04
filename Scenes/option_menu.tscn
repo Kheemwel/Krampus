@@ -1,7 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpwcdnvskm88y"]
-
-[ext_resource type="FontFile" path="res://Assets/font-style/VCR_OSD_MONO_1.001.ttf" id="1_yaawo"]
-[ext_resource type="Texture2D" path="res://Assets/UI/UI-sheet 3.png" id="2_3wvt5"]
+[gd_scene format=3 uid="uid://dpwcdnvskm88y"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -28,7 +25,6 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_yaawo")
 theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
 
@@ -48,4 +44,3 @@ size_flags_vertical = 1
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer2"]
 position = Vector2(-57, -11)
 scale = Vector2(1.5, 1.3)
-texture = ExtResource("2_3wvt5")

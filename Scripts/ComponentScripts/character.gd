@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var joystick = $"../CanvasLayer/joystick"
+#@onready var joystick = $CanvasLayer/joystick
+@onready var joystick_v_2 = $CanvasLayer/joystick_v2
 
 @export var MAX_SPEED: int = 100
 @export var ACCELERATION: int = 1500
@@ -20,7 +21,7 @@ func get_input_axis():
 	return axis.normalized()
 
 func move(delta):
-	var axis = joystick.posVector
+	var axis = joystick_v_2.get_velo()
 	if axis:
 		axis = axis.normalized()
 		velocity = axis * MAX_SPEED

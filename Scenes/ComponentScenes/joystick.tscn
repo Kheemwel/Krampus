@@ -21,6 +21,7 @@ script = ExtResource("4_euyot")
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = -112.0
 offset_top = -115.0
 offset_right = 115.0
