@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vjv25vwotest"]
+[gd_scene load_steps=20 format=3 uid="uid://vjv25vwotest"]
 
 [ext_resource type="Texture2D" uid="uid://b5oybvg0ajt5b" path="res://Assets/Sprites/asset-2.png" id="1_aovxn"]
 [ext_resource type="Texture2D" uid="uid://6qokua0g4c6f" path="res://Assets/Sprites/Krampus-Floor.png" id="2_0smms"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cg4iyt2ec3rdl" path="res://Assets/Sprites/Mirror-And-Flowerpot.png" id="5_pfiu7"]
 [ext_resource type="Texture2D" uid="uid://k8wrryowlmgi" path="res://Assets/Sprites/Tile-set 2.png" id="6_1mqxf"]
 [ext_resource type="Texture2D" uid="uid://8k631r8vjqs2" path="res://Assets/Sprites/asset-1.png" id="7_cq0el"]
+[ext_resource type="Texture2D" uid="uid://cohma2uiir4ey" path="res://Assets/Sprites/border.png" id="9_m0f51"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jddqi"]
 texture = ExtResource("1_aovxn")
@@ -1344,6 +1345,12 @@ texture = ExtResource("4_1ej38")
 9:9/0/physics_layer_0/angular_velocity = 0.0
 9:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -2, -8, -2, -4, -4, -2, -8, -2)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_semc6"]
+texture = ExtResource("9_m0f51")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_6o73g"]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
@@ -1357,6 +1364,7 @@ sources/5 = SubResource("TileSetAtlasSource_7hi3d")
 sources/6 = SubResource("TileSetAtlasSource_sx8ho")
 sources/7 = SubResource("TileSetAtlasSource_v5hmn")
 sources/3 = SubResource("TileSetAtlasSource_qk4xn")
+sources/8 = SubResource("TileSetAtlasSource_semc6")
 
 [node name="Tilemap" type="TileMap"]
 y_sort_enabled = true
