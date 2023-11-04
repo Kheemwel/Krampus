@@ -1,46 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bomps03hw42pf"]
+[gd_scene load_steps=5 format=3 uid="uid://bomps03hw42pf"]
 
 [ext_resource type="Script" path="res://Chat Box/textbox.gd" id="1_0phha"]
+[ext_resource type="Texture2D" uid="uid://cwiqpnw33sf7d" path="res://Assets/Sprites/Krampus UI Sheet.png" id="2_sm4m5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiiid"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(1, 1, 1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx7q8"]
+atlas = ExtResource("2_sm4m5")
+region = Rect2(363, 467, 470, 210)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4tnfp"]
+texture = SubResource("AtlasTexture_nx7q8")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
 
 [node name="Textbox" type="CanvasLayer"]
 script = ExtResource("1_0phha")
 
-[node name="TextBoxContainer" type="MarginContainer" parent="."]
+[node name="TextBoxContainer" type="PanelContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -212.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_vertical = 8
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="Panel" type="Panel" parent="TextBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qiiid")
+theme_override_styles/panel = SubResource("StyleBoxTexture_4tnfp")
 
 [node name="MarginContainer" type="MarginContainer" parent="TextBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 32
+theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="Panel" type="Panel" parent="TextBoxContainer/MarginContainer"]
-visible = false
-layout_mode = 2
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -70,3 +61,13 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 62
 text = "v"
+
+[node name="reset button" type="Button" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 20.0
+offset_bottom = 15.0
+scale = Vector2(63.6531, 47.5331)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="reset button" to="." method="_on_reset_button_pressed"]

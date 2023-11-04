@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5llqnd5qnudy"]
+[gd_scene load_steps=10 format=3 uid="uid://c5llqnd5qnudy"]
 
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_jkidl"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_tbvjx"]
@@ -63,14 +63,3 @@ position = Vector2(427, 203)
 position = Vector2(460, 348)
 
 [node name="Interaction Chat" parent="." instance=ExtResource("7_skdbx")]
-
-[node name="reset button" type="Button" parent="Interaction Chat"]
-modulate = Color(1, 1, 1, 0.654902)
-self_modulate = Color(1, 1, 1, 0)
-offset_right = 20.0
-offset_bottom = 15.0
-scale = Vector2(64.0925, 48.104)
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="CanvasLayer/Button" to="Character" method="_on_button_pressed"]
-[connection signal="pressed" from="Interaction Chat/reset button" to="Character" method="_on_reset_button_pressed"]

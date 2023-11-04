@@ -143,7 +143,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = ExtResource("4_pwnwl")
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_option_pressed"]

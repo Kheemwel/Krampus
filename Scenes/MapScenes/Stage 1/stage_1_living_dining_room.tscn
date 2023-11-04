@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://gh8kkycbud0o"]
+[gd_scene load_steps=10 format=3 uid="uid://gh8kkycbud0o"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_benoc"]
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_qdgvm"]
-[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="2_wfnsy"]
+[ext_resource type="PackedScene" uid="uid://d0iilxsiusx6u" path="res://Scenes/ComponentScenes/character.tscn" id="4_4chgr"]
 [ext_resource type="PackedScene" uid="uid://bkabvsjds3raq" path="res://Scenes/MapScenes/Scenes/teleport.tscn" id="4_gd0ir"]
 [ext_resource type="PackedScene" uid="uid://bq5wwn3fnb8cv" path="res://Scenes/MapScenes/Scenes/night.tscn" id="4_tkxvh"]
 [ext_resource type="PackedScene" uid="uid://bykfyfkwfjorh" path="res://InteractactionArea/interact_area.tscn" id="7_fuxkj"]
@@ -28,6 +28,9 @@ layer_4/tile_data = PackedInt32Array(196627, 65540, 1, 196628, 65540, 1, 196629,
 
 [node name="night" parent="." instance=ExtResource("4_tkxvh")]
 position = Vector2(0, -1)
+
+[node name="Character" parent="." instance=ExtResource("4_4chgr")]
+position = Vector2(428, 459)
 
 [node name="stage_1_hallway_room" parent="." instance=ExtResource("4_gd0ir")]
 
@@ -144,13 +147,3 @@ Interact_type = "print_text"
 Interact_value = "drawer"
 
 [node name="Interaction Chat" parent="." instance=ExtResource("8_4yk1h")]
-
-[node name="reset button" type="Button" parent="Interaction Chat"]
-self_modulate = Color(1, 1, 1, 0)
-offset_right = 20.0
-offset_bottom = 15.0
-scale = Vector2(63.6531, 47.5331)
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="CanvasLayer/Button" to="Character" method="_on_button_pressed"]
-[connection signal="pressed" from="Interaction Chat/reset button" to="Character" method="_on_reset_button_pressed"]

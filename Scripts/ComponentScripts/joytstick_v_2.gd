@@ -18,11 +18,14 @@ func _input(event):
 			touched = false
 
 func _process(delta):
+	# Change Knob position base on input keys
+	knob.position.x = Input.get_axis("move_left", "move_right") * 30
+	knob.position.y = Input.get_axis("move_up", "move_down") * 30
+	
 	if touched:
 		knob.global_position = get_global_mouse_position()
 		#clamp the knob
 		knob.position = ring.position + (knob.position - ring.position).limit_length(max_distance)
-		
 
 func get_velo():
 	var joystick_velo = Vector2(2,0)

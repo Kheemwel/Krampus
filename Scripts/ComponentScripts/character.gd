@@ -89,10 +89,5 @@ func execute_interaction():
 			"picture" : $"../Interaction Chat"._add_text("what a beautiful paint")
 
 
-func _on_button_pressed():
+func _on_interact_button_pressed():
 	execute_interaction()
-	
-
-
-func _on_reset_button_pressed():
-	$"../Interaction Chat"._hide_textbox()

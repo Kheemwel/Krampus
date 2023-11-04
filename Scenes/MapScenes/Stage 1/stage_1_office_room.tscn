@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwjon7ci3ctfj"]
+[gd_scene load_steps=9 format=3 uid="uid://cwjon7ci3ctfj"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_br6qa"]
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_pi0bo"]
@@ -33,27 +33,6 @@ shape = SubResource("RectangleShape2D_607ly")
 
 [node name="stage_1_library_room_pos" type="Marker2D" parent="."]
 position = Vector2(228, 163)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="joystick" parent="CanvasLayer" instance=ExtResource("5_nyx5g")]
-anchors_preset = -1
-anchor_left = 0.138
-anchor_top = 0.776
-anchor_right = 0.138
-anchor_bottom = 0.776
-offset_left = 0.359985
-offset_top = 0.279968
-offset_right = 0.359985
-offset_bottom = 0.279968
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 1034.0
-offset_top = 507.0
-offset_right = 1159.0
-offset_bottom = 621.0
-size_flags_stretch_ratio = 5.85
 
 [node name="Interaction Area" type="Node" parent="."]
 
@@ -90,13 +69,3 @@ Interact_type = "bookshelf"
 Interact_value = "bookshelf"
 
 [node name="Interaction Chat" parent="." instance=ExtResource("8_smc1d")]
-
-[node name="reset button" type="Button" parent="Interaction Chat"]
-self_modulate = Color(1, 1, 1, 0)
-offset_right = 20.0
-offset_bottom = 15.0
-scale = Vector2(64.0925, 48.104)
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="CanvasLayer/Button" to="Character" method="_on_button_pressed"]
-[connection signal="pressed" from="Interaction Chat/reset button" to="Character" method="_on_reset_button_pressed"]
