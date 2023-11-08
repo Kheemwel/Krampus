@@ -59,11 +59,15 @@ radius = 16.0
 [sub_resource type="SystemFont" id="SystemFont_spr4v"]
 subpixel_positioning = 0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckdua"]
+radius = 16.0
+
 [node name="Character" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(0, 1)
 scale = Vector2(0.5, 0.5)
-collision_mask = 3
+collision_layer = 11
+collision_mask = 31
 script = ExtResource("1_psmm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -149,6 +153,13 @@ offset_bottom = 134.0
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_w1rhj")
 autoplay = true
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ckdua")
 
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
