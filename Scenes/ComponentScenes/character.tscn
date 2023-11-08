@@ -78,7 +78,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -150,7 +150,7 @@ offset_bottom = 134.0
 stream = ExtResource("6_w1rhj")
 autoplay = true
 
-[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
 [connection signal="area_entered" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_exited"]

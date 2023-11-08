@@ -148,7 +148,7 @@ texture = ExtResource("4_pwnwl")
 stream = ExtResource("7_bq6xu")
 autoplay = true
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_button_pressed"]
