@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://baqwj03xji61f"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/SplashScreenManager.gd" id="1_yxckl"]
-[ext_resource type="PackedScene" uid="uid://b7eg7mo6cui8j" path="res://Scenes/UI/MainMenu.tscn" id="2_2iv2s"]
-[ext_resource type="PackedScene" uid="uid://cga435it4a2gf" path="res://Scenes/UI/studio.tscn" id="2_rxive"]
-[ext_resource type="PackedScene" uid="uid://dehvk3qabl8a3" path="res://Scenes/UI/godotSplash.tscn" id="3_qltqq"]
+[ext_resource type="PackedScene" uid="uid://b8ld10j0ie0sb" path="res://Scenes/UI/MainMenu.tscn" id="2_2iv2s"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/studio.tscn" id="2_rxive"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/godotSplash.tscn" id="3_qltqq"]
 [ext_resource type="AudioStream" uid="uid://dh6nwxgvedmm2" path="res://Assets/Audio/epic-hybrid-logo-157092.mp3" id="5_futpg"]
 
 [node name="SplashScreenManager" type="Control"]

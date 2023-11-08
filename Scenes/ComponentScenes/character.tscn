@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0iilxsiusx6u"]
+[gd_scene load_steps=14 format=3 uid="uid://d0iilxsiusx6u"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/character.gd" id="1_psmm1"]
 [ext_resource type="Texture2D" uid="uid://c1mkatx0p4n72" path="res://Assets/Sprites/character_.png" id="2_6cyaj"]
 [ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="3_43nd8"]
 [ext_resource type="PackedScene" uid="uid://cau5ul7kx2txy" path="res://Scenes/ComponentScenes/joytstick_v_2.tscn" id="4_qiggr"]
+[ext_resource type="PackedScene" uid="uid://blra77sc4cyc7" path="res://Scenes/ComponentScenes/menu_button.tscn" id="5_3r8ga"]
+[ext_resource type="AudioStream" uid="uid://d0wexd2jbkomp" path="res://Assets/Audio/Krampus_MainBackground.mp3" id="6_w1rhj"]
 
 [sub_resource type="Animation" id="Animation_7fs2d"]
 length = 0.001
@@ -138,7 +140,17 @@ theme_override_font_sizes/font_size = 13
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
+[node name="MenuButton" parent="." instance=ExtResource("5_3r8ga")]
+offset_left = 550.0
+offset_top = 134.0
+offset_right = 550.0
+offset_bottom = 134.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_w1rhj")
+autoplay = true
+
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
 [connection signal="area_entered" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_exited"]

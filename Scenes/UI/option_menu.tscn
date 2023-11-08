@@ -80,14 +80,13 @@ metadata/_edit_use_anchors_ = true
 [node name="back" type="Button" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.434375
-anchor_top = 0.813889
-anchor_right = 0.570313
-anchor_bottom = 0.855556
+anchor_left = 0.453906
+anchor_top = 0.815278
+anchor_right = 0.546875
+anchor_bottom = 0.863889
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("4_ffnq2")
 text = "Back"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ColorRect/back" to="." method="_on_back_pressed"]
