@@ -10,13 +10,16 @@ var originalMaxSpeed: int = MAX_SPEED  # Store the original MAX_SPEED
 
 @onready var axis = Vector2.ZERO
 
+func _input(event):
+	if event.is_action_pressed("pause"):
+		get_tree().paused = true
+		$CanvasLayer/PausedMenu.show()
+
 func _ready():
 	originalMaxSpeed = MAX_SPEED  # Store the original MAX_SPEED at the beginning
 
 func _physics_process(delta):
 	move(delta)
-	
-	
 
 func get_input_axis():
 	axis = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -78,7 +81,6 @@ func update_interactions():
 
 func execute_interaction():
 	if all_interaction:
-		
 		var cur_interaction = all_interaction[0]
 		match cur_interaction.Interact_type:
 			"print_text" : $"../Interaction Chat"._add_text("there's nothing in the "+cur_interaction.Interact_value)
@@ -91,3 +93,14 @@ func execute_interaction():
 
 func _on_interact_button_pressed():
 	execute_interaction()
+
+func _on_menu_button_pressed():
+	get_tree().paused = true
+	$CanvasLayer/PausedMenu.show()
+
+
+func _on_paused_menu_visibility_changed():
+	if $CanvasLayer/PausedMenu.visible:
+		set_process_input(false)
+	else:
+		set_process_input(true)

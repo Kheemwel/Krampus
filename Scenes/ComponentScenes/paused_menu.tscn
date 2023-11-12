@@ -1,21 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvibnhjvnrxx4"]
+[gd_scene load_steps=10 format=3 uid="uid://bvibnhjvnrxx4"]
 
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="1_gq5ul"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/paused_menu.gd" id="1_oy31b"]
 [ext_resource type="Texture2D" uid="uid://up8d1hwax0f6" path="res://Assets/Sprites/MainMenu Background.png" id="2_27khe"]
-[ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="3_lanxg"]
-[ext_resource type="Texture2D" uid="uid://cwxlx4ro6bpe6" path="res://Assets/Sprites/button.png" id="4_gcm1q"]
+[ext_resource type="Texture2D" uid="uid://cqrdyg7b01yom" path="res://Assets/Sprites/NewAppTitle.png" id="5_esydl"]
 [ext_resource type="Texture2D" uid="uid://d2la86uu4dcrl" path="res://Assets/Sprites/Game Title.png" id="5_wra5x"]
 [ext_resource type="AudioStream" uid="uid://bkm142hmtwfu0" path="res://Assets/Audio/Krampus_PauseMenu.mp3" id="6_lerxa"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6d1p"]
-texture = ExtResource("4_gcm1q")
-texture_margin_left = 43.0
-texture_margin_top = 5.0
-texture_margin_right = 43.0
-texture_margin_bottom = 11.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_wudgp"]
+atlas = ExtResource("5_esydl")
+region = Rect2(0, 45, 1511, 606)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ih7q"]
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 10, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c06v"]
+atlas = ExtResource("1_gq5ul")
+region = Rect2(504, 162, 4, 3)
 
 [node name="PausedMenu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,17 +38,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oy31b")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.388235, 0, 0.0313726, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +58,7 @@ grow_vertical = 2
 texture = ExtResource("1_gq5ul")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ColorRect"]
+[node name="TextureRect2" type="TextureRect" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.602344
@@ -56,96 +70,94 @@ grow_vertical = 0
 texture = ExtResource("2_27khe")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -307.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.292
+anchor_right = 0.5
+anchor_bottom = 0.292
+offset_left = -328.0
+offset_top = -150.24
+offset_right = 328.0
+offset_bottom = 138.76
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = ExtResource("5_wra5x")
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="NewKrampusTitle" type="TextureRect" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wudgp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
 text = "GAME PAUSED"
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.307813
-anchor_top = 0.551389
-anchor_right = 0.705469
-anchor_bottom = 0.945833
-offset_top = 3.05176e-05
+anchor_left = 0.5
+anchor_top = 0.753
+anchor_right = 0.5
+anchor_bottom = 0.753
+offset_left = -254.5
+offset_top = -142.16
+offset_right = 254.5
+offset_bottom = 141.84
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+theme_override_constants/separation = 75
 
-[node name="resume" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.29666
-anchor_top = 0.767606
-anchor_right = 0.709234
-anchor_bottom = 0.950704
-theme_override_fonts/font = ExtResource("3_lanxg")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/hover = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/focus = SubResource("StyleBoxTexture_c6d1p")
-text = "RESUME"
-metadata/_edit_use_anchors_ = true
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
 
-[node name="options" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.290766
-anchor_top = 0.105634
-anchor_right = 0.708089
-anchor_bottom = 0.295899
-theme_override_fonts/font = ExtResource("3_lanxg")
+[node name="OptionButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/hover = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/focus = SubResource("StyleBoxTexture_c6d1p")
 text = "OPTIONS"
-metadata/_edit_use_anchors_ = true
 
-[node name="quit" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.290766
-anchor_top = 0.394366
-anchor_right = 0.710057
-anchor_bottom = 0.584632
-theme_override_fonts/font = ExtResource("3_lanxg")
+[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/hover = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_c6d1p")
-theme_override_styles/focus = SubResource("StyleBoxTexture_c6d1p")
 text = "QUIT"
-metadata/_edit_use_anchors_ = true
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "RESUME"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lerxa")
 autoplay = true
 
-[connection signal="pressed" from="CanvasLayer/Panel/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/quit" to="." method="_on_quit_pressed"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(600, -50)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_6ih7q")
+texture = SubResource("AtlasTexture_8c06v")
+lifetime = 15.0
+preprocess = 15.0
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

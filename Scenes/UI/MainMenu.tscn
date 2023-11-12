@@ -1,19 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8ld10j0ie0sb"]
+[gd_scene load_steps=10 format=3 uid="uid://b8ld10j0ie0sb"]
 
 [ext_resource type="Script" path="res://Scripts/SceneScripts/MainMenu.gd" id="1_u1sfq"]
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="2_lb2ko"]
 [ext_resource type="Texture2D" uid="uid://up8d1hwax0f6" path="res://Assets/Sprites/MainMenu Background.png" id="3_cnf2r"]
 [ext_resource type="Texture2D" uid="uid://d2la86uu4dcrl" path="res://Assets/Sprites/Game Title.png" id="4_pwnwl"]
-[ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="5_v0d8d"]
-[ext_resource type="Texture2D" uid="uid://cwxlx4ro6bpe6" path="res://Assets/Sprites/button.png" id="6_din3k"]
+[ext_resource type="Texture2D" uid="uid://cqrdyg7b01yom" path="res://Assets/Sprites/NewAppTitle.png" id="5_40j6s"]
 [ext_resource type="AudioStream" uid="uid://dagdp8nhc1102" path="res://Assets/Audio/Krampus_MainMenu.mp3" id="7_bq6xu"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gi83t"]
-texture = ExtResource("6_din3k")
-texture_margin_left = 43.0
-texture_margin_top = 5.0
-texture_margin_right = 43.0
-texture_margin_bottom = 11.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dhvo"]
+atlas = ExtResource("5_40j6s")
+region = Rect2(0, 45, 1511, 606)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qp3jk"]
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 10, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi8gy"]
+atlas = ExtResource("2_lb2ko")
+region = Rect2(504, 162, 4, 3)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,17 +37,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1sfq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bq6xu")
+autoplay = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.388235, 0, 0.0313726, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect"]
+[node name="Snow" type="TextureRect" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +61,7 @@ grow_vertical = 2
 texture = ExtResource("2_lb2ko")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ColorRect"]
+[node name="KrampusLogo" type="TextureRect" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.602344
@@ -56,99 +73,76 @@ grow_vertical = 0
 texture = ExtResource("3_cnf2r")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 11.0
-offset_bottom = 221.0
+[node name="NewKrampusTitle" type="TextureRect" parent="ColorRect"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.312
+anchor_right = 0.5
+anchor_bottom = 0.312
+offset_left = -312.0
+offset_top = -124.64
+offset_right = 311.35
+offset_bottom = 125.36
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("AtlasTexture_8dhvo")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="vbox" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="start" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_v0d8d")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_gi83t")
-theme_override_styles/hover = SubResource("StyleBoxTexture_gi83t")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gi83t")
-theme_override_styles/focus = SubResource("StyleBoxTexture_gi83t")
-text = "START"
-
-[node name="StartButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer"]
+[node name="KrampusTitle" type="TextureRect" parent="ColorRect"]
 visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "START"
-
-[node name="vbox1" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1"]
-layout_mode = 2
-
-[node name="option" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer"]
-layout_mode = 2
-icon = ExtResource("6_din3k")
-flat = true
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("5_v0d8d")
-theme_override_font_sizes/font_size = 30
-text = "OPTIONS"
-horizontal_alignment = 1
-
-[node name="OptionsButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "OPTIONS"
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -245.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.347
+anchor_right = 0.5
+anchor_bottom = 0.347
+offset_left = -328.0
+offset_top = -118.84
+offset_right = 328.0
+offset_bottom = 119.16
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = ExtResource("4_pwnwl")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_bq6xu")
-autoplay = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.639
+anchor_right = 0.5
+anchor_bottom = 0.639
+offset_left = -105.0
+offset_top = -60.08
+offset_right = 105.0
+offset_bottom = 59.92
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_button_pressed"]
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(600, -50)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_qp3jk")
+texture = SubResource("AtlasTexture_bi8gy")
+lifetime = 15.0
+preprocess = 15.0
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
