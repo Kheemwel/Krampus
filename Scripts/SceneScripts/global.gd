@@ -1,4 +1,4 @@
 extends Node
 
 var entered = false
-var from_level
+var from_level = null
