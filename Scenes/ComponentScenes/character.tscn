@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d0iilxsiusx6u"]
+[gd_scene load_steps=17 format=3 uid="uid://d0iilxsiusx6u"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/character.gd" id="1_psmm1"]
 [ext_resource type="Texture2D" uid="uid://d0vcp4raqeayc" path="res://Assets/Sprites/Nanny-WIP (1).png" id="2_b42tp"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cau5ul7kx2txy" path="res://Scenes/ComponentScenes/joytstick_v_2.tscn" id="4_qiggr"]
 [ext_resource type="PackedScene" uid="uid://blra77sc4cyc7" path="res://Scenes/ComponentScenes/menu_button.tscn" id="5_3r8ga"]
 [ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_gva3s"]
+[ext_resource type="Texture2D" uid="uid://be4pg77xsbs44" path="res://Assets/Sprites/Menu Button.png" id="5_jh46b"]
+[ext_resource type="AudioStream" uid="uid://d0wexd2jbkomp" path="res://Assets/Audio/Krampus_MainBackground.mp3" id="6_w1rhj"]
+[ext_resource type="PackedScene" uid="uid://bvibnhjvnrxx4" path="res://Scenes/ComponentScenes/paused_menu.tscn" id="7_cu5xi"]
 
 [sub_resource type="Animation" id="Animation_7fs2d"]
 length = 0.001
@@ -173,6 +176,11 @@ size = Vector2(7.99999, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfqsg"]
 size = Vector2(16, 8)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hamqo"]
+texture = ExtResource("5_jh46b")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu0a3"]
+radius = 16.0
 
 [sub_resource type="SystemFont" id="SystemFont_spr4v"]
 subpixel_positioning = 0
@@ -233,10 +241,14 @@ scale = Vector2(2, 2)
 
 [node name="InteractButton" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.857031
-anchor_top = 0.777778
-anchor_right = 0.935156
-anchor_bottom = 0.916667
+anchor_left = 0.896
+anchor_top = 0.847
+anchor_right = 0.896
+anchor_bottom = 0.847
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.1196
+offset_bottom = 50.1602
 grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"InteractButton"
@@ -244,10 +256,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="InventoryButton" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.659375
-anchor_top = 0.772222
-anchor_right = 0.7375
-anchor_bottom = 0.911111
+anchor_left = 0.698
+anchor_top = 0.842
+anchor_right = 0.698
+anchor_bottom = 0.842
+offset_left = -50.0
+offset_top = -50.2402
+offset_right = 50.56
+offset_bottom = 49.7599
 theme_type_variation = &"InventoryButton"
 metadata/_edit_use_anchors_ = true
 
@@ -258,6 +274,25 @@ anchor_top = 0.743056
 anchor_right = 0.144531
 anchor_bottom = 0.743056
 metadata/_edit_use_anchors_ = true
+[node name="MenuButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.096
+anchor_right = 0.104
+anchor_bottom = 0.096
+offset_left = -41.12
+offset_top = -36.12
+offset_right = 40.8794
+offset_bottom = 35.8798
+theme_override_styles/normal = SubResource("StyleBoxTexture_hamqo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hamqo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hamqo")
+theme_override_styles/focus = SubResource("StyleBoxTexture_hamqo")
+
+[node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("7_cu5xi")]
+visible = false
+offset_top = 1.0
+offset_bottom = 1.0
 
 [node name="Interaction" type="Node2D" parent="."]
 z_index = 1
@@ -286,6 +321,9 @@ offset_left = 550.0
 offset_top = 134.0
 offset_right = 550.0
 offset_bottom = 134.0
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_w1rhj")
+autoplay = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
@@ -298,5 +336,7 @@ shape = SubResource("RectangleShape2D_qp3et")
 
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="visibility_changed" from="CanvasLayer/PausedMenu" to="." method="_on_paused_menu_visibility_changed"]
 [connection signal="area_entered" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_exited"]
