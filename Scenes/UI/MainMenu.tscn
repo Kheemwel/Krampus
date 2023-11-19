@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b8ld10j0ie0sb"]
 
-[ext_resource type="Script" path="res://Scripts/SceneScripts/MainMenu.gd" id="1_u1sfq"]
+[ext_resource type="Script" path="res://Scripts/SceneScripts/MainMenu.gd" id="1_2jkos"]
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="2_lb2ko"]
 [ext_resource type="Texture2D" uid="uid://up8d1hwax0f6" path="res://Assets/Sprites/MainMenu Background.png" id="3_cnf2r"]
 [ext_resource type="Texture2D" uid="uid://d2la86uu4dcrl" path="res://Assets/Sprites/Game Title.png" id="4_pwnwl"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u1sfq")
+script = ExtResource("1_2jkos")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -56,73 +56,6 @@ grow_vertical = 0
 texture = ExtResource("3_cnf2r")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 11.0
-offset_bottom = 221.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="vbox" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="start" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_v0d8d")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_gi83t")
-theme_override_styles/hover = SubResource("StyleBoxTexture_gi83t")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_gi83t")
-theme_override_styles/focus = SubResource("StyleBoxTexture_gi83t")
-text = "START"
-
-[node name="StartButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "START"
-
-[node name="vbox1" type="VBoxContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1"]
-layout_mode = 2
-
-[node name="option" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer"]
-layout_mode = 2
-icon = ExtResource("6_din3k")
-flat = true
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("5_v0d8d")
-theme_override_font_sizes/font_size = 30
-text = "OPTIONS"
-horizontal_alignment = 1
-
-[node name="OptionsButton" type="Button" parent="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "OPTIONS"
-
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 14
 anchor_top = 0.5
@@ -144,11 +77,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = ExtResource("4_pwnwl")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 552.0
+offset_top = 431.0
+offset_right = 771.0
+offset_bottom = 535.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="start" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("5_v0d8d")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_gi83t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gi83t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gi83t")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gi83t")
+text = "START"
+
+[node name="Option" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_bq6xu")
-autoplay = true
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox/MarginContainer/start" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer2/VBoxContainer/vbox1/MarginContainer/option" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Option" to="." method="_on_option_pressed"]

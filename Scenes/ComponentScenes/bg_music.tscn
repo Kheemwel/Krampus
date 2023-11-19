@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://coqcin2y81c28"]
+
+[ext_resource type="AudioStream" uid="uid://d0wexd2jbkomp" path="res://Assets/Audio/Krampus_MainBackground.mp3" id="1_3o3ql"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_3o3ql")
+autoplay = true
+mix_target = 1

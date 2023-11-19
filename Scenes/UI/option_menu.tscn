@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkdixuadv3iro"]
+[gd_scene load_steps=12 format=3 uid="uid://dkdixuadv3iro"]
 
 [ext_resource type="Script" path="res://Scripts/SceneScripts/option_menu.gd" id="1_77kfo"]
 [ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="1_yaawo"]
@@ -11,10 +11,26 @@ content_margin_left = 70.0
 content_margin_right = 70.0
 texture = ExtResource("2_3wvt5")
 
-[node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_77kfo")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lvc3"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ivqf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ili7e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eoyem"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3ppf"]
+
+[node name="option_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("1_77kfo")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.388235, 0, 0.0313726, 1)
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 2
 anchor_left = 0.424219
 anchor_top = 0.0944444
@@ -37,7 +53,7 @@ theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ColorRect"]
 layout_mode = 2
 anchor_left = 0.260938
 anchor_top = 0.244444
@@ -46,28 +62,41 @@ anchor_bottom = 0.734722
 theme_override_styles/panel = SubResource("StyleBoxTexture_mvu8g")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="bgm" type="Label" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="bgm" type="Label" parent="CanvasLayer/ColorRect/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "BGM"
 
-[node name="bgm_slider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/ColorRect/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8lvc3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4ivqf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ili7e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_eoyem")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p3ppf")
+action_mode = 0
+
+[node name="bgm_slider" type="HSlider" parent="CanvasLayer/ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("3_w46m4")
 theme_override_icons/grabber_highlight = ExtResource("3_w46m4")
 theme_override_icons/grabber_disabled = ExtResource("3_w46m4")
 theme_override_icons/tick = ExtResource("3_w46m4")
-value = 50.0
+max_value = 50.0
+value = 25.0
 metadata/_edit_use_anchors_ = true
 
-[node name="SFX" type="Label" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="SFX" type="Label" parent="CanvasLayer/ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "SFX"
 
-[node name="sfx_slider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="sfx_slider" type="HSlider" parent="CanvasLayer/ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_icons/grabber = ExtResource("3_w46m4")
@@ -77,7 +106,7 @@ theme_override_icons/tick = ExtResource("3_w46m4")
 value = 50.0
 metadata/_edit_use_anchors_ = true
 
-[node name="back" type="Button" parent="ColorRect"]
+[node name="back" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.453906
@@ -89,4 +118,6 @@ grow_vertical = 0
 theme = ExtResource("4_ffnq2")
 text = "Back"
 
-[connection signal="pressed" from="ColorRect/back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="CanvasLayer/ColorRect/PanelContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="CanvasLayer/ColorRect/PanelContainer/VBoxContainer/bgm_slider" to="." method="_on_bgm_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/back" to="." method="_on_back_pressed"]
