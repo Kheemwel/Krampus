@@ -5,6 +5,7 @@ class_name SplashScreen extends Control
 
 signal finished()
 
+
 func start() -> void:
 	modulate.a = 0
 	show()

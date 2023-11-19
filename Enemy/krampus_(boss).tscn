@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://dke8unhjdx8ph"]
+
+[ext_resource type="Script" path="res://Enemy/KRAMPUS (BOSS).gd" id="1_fd717"]
+[ext_resource type="Texture2D" uid="uid://cddnow6eaitsh" path="res://icon.svg" id="2_8kgd2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3c5cs"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6yf1"]
+radius = 241.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ns1ek"]
+radius = 306.472
+
+[node name="KRAMPUS (BOSS)" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+collision_layer = 17
+collision_mask = 29
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_fd717")
+nav_agent = NodePath("Navigation/NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.294118, 0, 0, 1)
+position = Vector2(0, 2.84217e-14)
+scale = Vector2(0.270313, 0.29375)
+texture = ExtResource("2_8kgd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3c5cs")
+
+[node name="Navigation" type="Node2D" parent="."]
+visible = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+debug_enabled = true
+
+[node name="Recalculate Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Aggro" type="Node2D" parent="."]
+
+[node name="AggroRange" type="Area2D" parent="Aggro"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/AggroRange"]
+shape = SubResource("CircleShape2D_u6yf1")
+debug_color = Color(0.819608, 0, 0.964706, 0.419608)
+
+[node name="DeAggroRange" type="Area2D" parent="Aggro"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/DeAggroRange"]
+shape = SubResource("CircleShape2D_ns1ek")
+debug_color = Color(0, 0.643137, 0.313726, 0.419608)
+
+[connection signal="timeout" from="Navigation/Recalculate Timer" to="." method="_on_recalculate_timer_timeout"]
+[connection signal="area_entered" from="Aggro/AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="Aggro/DeAggroRange" to="." method="_on_de_aggro_range_area_exited"]
