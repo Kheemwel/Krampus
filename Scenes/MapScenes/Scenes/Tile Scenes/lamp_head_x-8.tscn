@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vc85gn5ax6hj"]
+
+[ext_resource type="PackedScene" uid="uid://dor1volfpic70" path="res://Scenes/MapScenes/Scenes/Tile Scenes/lamp_head.tscn" id="1_24fo3"]
+
+[node name="lamp_head" instance=ExtResource("1_24fo3")]
+position = Vector2(-8, 0)
