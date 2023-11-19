@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dor1volfpic70"]
+
+[ext_resource type="Texture2D" uid="uid://bp36e77db3wpp" path="res://Assets/Sprites/lamp_head.png" id="1_85yi3"]
+[ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="2_jr2jy"]
+
+[node name="lamp_head" type="Node2D"]
+y_sort_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_85yi3")
+
+[node name="PointLight2D" type="PointLight2D" parent="StaticBody2D/Sprite2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_jr2jy")
