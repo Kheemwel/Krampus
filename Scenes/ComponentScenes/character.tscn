@@ -1,10 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://dn7oe210le45m"]
+[gd_scene load_steps=33 format=3 uid="uid://dn7oe210le45m"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/character.gd" id="1_psmm1"]
 [ext_resource type="Texture2D" uid="uid://d0vcp4raqeayc" path="res://Assets/Sprites/Nanny-WIP (1).png" id="2_b42tp"]
 [ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="3_43nd8"]
-[ext_resource type="PackedScene" uid="uid://cau5ul7kx2txy" path="res://Scenes/ComponentScenes/joytstick_v_2.tscn" id="4_qiggr"]
-[ext_resource type="PackedScene" uid="uid://blra77sc4cyc7" path="res://Scenes/ComponentScenes/menu_button.tscn" id="5_3r8ga"]
 [ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_gva3s"]
 [ext_resource type="Texture2D" uid="uid://be4pg77xsbs44" path="res://Assets/Sprites/Menu Button.png" id="5_jh46b"]
 [ext_resource type="AudioStream" uid="uid://d0wexd2jbkomp" path="res://Assets/Audio/Krampus_MainBackground.mp3" id="6_w1rhj"]
@@ -207,7 +205,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(6, 6)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_76j00")
@@ -231,11 +229,6 @@ blend_mode = 2
 texture = ExtResource("3_43nd8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="joystick_v2" parent="CanvasLayer" instance=ExtResource("4_qiggr")]
-visible = false
-position = Vector2(171, 568)
-scale = Vector2(2, 2)
 
 [node name="InteractButton" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -265,7 +258,8 @@ offset_bottom = 49.7599
 theme_type_variation = &"InventoryButton"
 metadata/_edit_use_anchors_ = true
 
-[node name="joystick" parent="CanvasLayer" instance=ExtResource("5_gva3s")]
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource("5_gva3s")]
+unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.144531
 anchor_top = 0.743056
@@ -315,15 +309,10 @@ theme_override_font_sizes/font_size = 13
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuButton" parent="." instance=ExtResource("5_3r8ga")]
-offset_left = 550.0
-offset_top = 134.0
-offset_right = 550.0
-offset_bottom = 134.0
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_w1rhj")
 autoplay = true
+bus = &"BGM"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

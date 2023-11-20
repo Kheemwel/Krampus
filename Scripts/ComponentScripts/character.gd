@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var joystick = $CanvasLayer/joystick
+@onready var joystick = %Joystick
 #@onready var joystick_v_2 = $CanvasLayer/joystick_v2
 
 @export var MAX_SPEED: int = 100
@@ -23,9 +23,9 @@ func _ready():
 
 
 #func _process(delta):
-
 	
 func _physics_process(delta):
+#	print(axis)
 	move()	
 	update_animation_parameters()
 	
@@ -36,7 +36,13 @@ func get_input_axis():
 	
 
 func move():
-	axis = joystick.posVector.normalized()
+	# movement axis base on input key
+	var x_axis = Input.get_axis("move_left", "move_right")
+	var y_axis = Input.get_axis("move_up", "move_down")
+	var input_axis = Vector2(x_axis, y_axis).normalized()
+	
+	# choose joystick axis if input is null
+	axis = joystick.posVector.normalized() if input_axis == Vector2.ZERO else input_axis
 	if axis != Vector2.ZERO:
 		animation_tree.set("parameters/Idle/blend_position", axis)
 		animation_tree.set("parameters/Walk/blend_position", axis)

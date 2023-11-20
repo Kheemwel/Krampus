@@ -1,19 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkdixuadv3iro"]
+[gd_scene load_steps=15 format=3 uid="uid://dkdixuadv3iro"]
 
 [ext_resource type="Script" path="res://Scripts/SceneScripts/option_menu.gd" id="1_77kfo"]
 [ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="1_yaawo"]
 [ext_resource type="Texture2D" uid="uid://dljhjp1662ubf" path="res://Assets/Sprites/UI-sheet 3.png" id="2_3wvt5"]
 [ext_resource type="Texture2D" uid="uid://c8hi5c17lovoj" path="res://Assets/Sprites/Ellipse 3.png" id="3_w46m4"]
-[ext_resource type="Script" path="res://Scripts/ComponentScripts/BGMSlider.gd" id="5_am5qd"]
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="5_nsuel"]
 [ext_resource type="AudioStream" uid="uid://bkm142hmtwfu0" path="res://Assets/Audio/Krampus_PauseMenu.mp3" id="6_78enk"]
-[ext_resource type="Script" path="res://Scripts/ComponentScripts/SFXSlider.gd" id="6_jn3ow"]
-[ext_resource type="PackedScene" uid="uid://coqcin2y81c28" path="res://Scenes/ComponentScenes/BackgroundMusic.tscn" id="7_wyh1w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mvu8g"]
 content_margin_left = 70.0
 content_margin_right = 70.0
 texture = ExtResource("2_3wvt5")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lvc3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ivqf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ili7e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eoyem"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3ppf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ytyu2"]
 emission_shape = 3
@@ -70,66 +77,62 @@ theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -305.999
+offset_top = -184.0
+offset_right = 312.0
+offset_bottom = 169.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mvu8g")
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
 
-[node name="MuteBGM" type="CheckButton" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="bgm" type="Label" parent="ColorRect/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 30
 text = "BGM"
 
-[node name="BGMSlider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="ColorRect/PanelContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8lvc3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4ivqf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ili7e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_eoyem")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p3ppf")
+action_mode = 0
+
+[node name="bgm_slider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("3_w46m4")
 theme_override_icons/grabber_highlight = ExtResource("3_w46m4")
 theme_override_icons/grabber_disabled = ExtResource("3_w46m4")
 theme_override_icons/tick = ExtResource("3_w46m4")
-script = ExtResource("5_am5qd")
+max_value = 1.0
+step = 0.001
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="SFX" type="Label" parent="ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="MuteSFX" type="CheckButton" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 30
 text = "SFX"
 
-[node name="SFXSlider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
+[node name="sfx_slider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_icons/grabber = ExtResource("3_w46m4")
 theme_override_icons/grabber_highlight = ExtResource("3_w46m4")
 theme_override_icons/grabber_disabled = ExtResource("3_w46m4")
 theme_override_icons/tick = ExtResource("3_w46m4")
-script = ExtResource("6_jn3ow")
+value = 50.0
 metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="ColorRect"]
@@ -141,9 +144,9 @@ anchor_top = 0.799
 anchor_right = 0.5
 anchor_bottom = 0.799
 offset_left = -105.0
-offset_top = 24.72
+offset_top = -25.28
 offset_right = 105.0
-offset_bottom = 74.72
+offset_bottom = 24.72
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -157,14 +160,11 @@ texture = SubResource("AtlasTexture_nrntl")
 lifetime = 15.0
 preprocess = 15.0
 
-[node name="BackgroundMusic" parent="." instance=ExtResource("7_wyh1w")]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_78enk")
+autoplay = true
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="toggled" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/MuteBGM" to="." method="_on_mute_bgm_toggled"]
-[connection signal="tree_exiting" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" method="_on_tree_exiting"]
-[connection signal="value_changed" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" method="_on_value_changed"]
-[connection signal="toggled" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/MuteSFX" to="." method="_on_mute_sfx_toggled"]
-[connection signal="tree_exiting" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" method="_on_tree_exiting"]
-[connection signal="value_changed" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" method="_on_value_changed"]
+[connection signal="toggled" from="ColorRect/PanelContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="ColorRect/PanelContainer/VBoxContainer/bgm_slider" to="." method="_on_bgm_slider_value_changed"]
 [connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]
