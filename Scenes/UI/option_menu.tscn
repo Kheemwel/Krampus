@@ -1,33 +1,66 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkdixuadv3iro"]
+[gd_scene load_steps=13 format=3 uid="uid://dkdixuadv3iro"]
 
 [ext_resource type="Script" path="res://Scripts/SceneScripts/option_menu.gd" id="1_77kfo"]
 [ext_resource type="FontFile" uid="uid://jfimmo8g34rh" path="res://Assets/Resource/VCR_OSD_MONO_1.001.ttf" id="1_yaawo"]
 [ext_resource type="Texture2D" uid="uid://dljhjp1662ubf" path="res://Assets/Sprites/UI-sheet 3.png" id="2_3wvt5"]
 [ext_resource type="Texture2D" uid="uid://c8hi5c17lovoj" path="res://Assets/Sprites/Ellipse 3.png" id="3_w46m4"]
-[ext_resource type="Theme" uid="uid://dk625plvqv05w" path="res://Assets/Resource/KrampusTheme.tres" id="4_ffnq2"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/BGMSlider.gd" id="5_am5qd"]
+[ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="5_nsuel"]
+[ext_resource type="AudioStream" uid="uid://bkm142hmtwfu0" path="res://Assets/Audio/Krampus_PauseMenu.mp3" id="6_78enk"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/SFXSlider.gd" id="6_jn3ow"]
+[ext_resource type="PackedScene" uid="uid://coqcin2y81c28" path="res://Scenes/ComponentScenes/BackgroundMusic.tscn" id="7_wyh1w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mvu8g"]
 content_margin_left = 70.0
 content_margin_right = 70.0
 texture = ExtResource("2_3wvt5")
 
-[node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_77kfo")
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ytyu2"]
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 10, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 2.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrntl"]
+atlas = ExtResource("5_nsuel")
+region = Rect2(504, 162, 4, 3)
+
+[node name="OptionMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.388235, 0, 0.0313726, 1)
+script = ExtResource("1_77kfo")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 2
-anchor_left = 0.424219
-anchor_top = 0.0944444
-anchor_right = 0.582812
-anchor_bottom = 0.159722
+anchor_left = 0.5
+anchor_top = 0.127
+anchor_right = 0.5
+anchor_bottom = 0.127
+offset_left = -97.0001
+offset_top = -23.4401
+offset_right = 106.0
+offset_bottom = 23.5599
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -35,58 +68,103 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_yaawo")
 theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
-metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
-layout_mode = 2
-anchor_left = 0.260938
-anchor_top = 0.244444
-anchor_right = 0.74375
-anchor_bottom = 0.734722
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_mvu8g")
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 30
 
-[node name="bgm" type="Label" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MuteBGM" type="CheckButton" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
 text = "BGM"
 
-[node name="bgm_slider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="BGMSlider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("3_w46m4")
 theme_override_icons/grabber_highlight = ExtResource("3_w46m4")
 theme_override_icons/grabber_disabled = ExtResource("3_w46m4")
 theme_override_icons/tick = ExtResource("3_w46m4")
-value = 50.0
+script = ExtResource("5_am5qd")
 metadata/_edit_use_anchors_ = true
 
-[node name="SFX" type="Label" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MuteSFX" type="CheckButton" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
 text = "SFX"
 
-[node name="sfx_slider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_icons/grabber = ExtResource("3_w46m4")
 theme_override_icons/grabber_highlight = ExtResource("3_w46m4")
 theme_override_icons/grabber_disabled = ExtResource("3_w46m4")
 theme_override_icons/tick = ExtResource("3_w46m4")
-value = 50.0
+script = ExtResource("6_jn3ow")
 metadata/_edit_use_anchors_ = true
 
-[node name="back" type="Button" parent="ColorRect"]
+[node name="BackButton" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(210, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.453906
-anchor_top = 0.815278
-anchor_right = 0.546875
-anchor_bottom = 0.863889
+anchor_left = 0.5
+anchor_top = 0.799
+anchor_right = 0.5
+anchor_bottom = 0.799
+offset_left = -105.0
+offset_top = 24.72
+offset_right = 105.0
+offset_bottom = 74.72
 grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("4_ffnq2")
-text = "Back"
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "BACK"
 
-[connection signal="pressed" from="ColorRect/back" to="." method="_on_back_pressed"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(600, -50)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_ytyu2")
+texture = SubResource("AtlasTexture_nrntl")
+lifetime = 15.0
+preprocess = 15.0
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("7_wyh1w")]
+stream = ExtResource("6_78enk")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="toggled" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/MuteBGM" to="." method="_on_mute_bgm_toggled"]
+[connection signal="tree_exiting" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" method="_on_tree_exiting"]
+[connection signal="value_changed" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer/BGMSlider" method="_on_value_changed"]
+[connection signal="toggled" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/MuteSFX" to="." method="_on_mute_sfx_toggled"]
+[connection signal="tree_exiting" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" method="_on_tree_exiting"]
+[connection signal="value_changed" from="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" to="ColorRect/PanelContainer/VBoxContainer/VBoxContainer2/SFXSlider" method="_on_value_changed"]
+[connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]

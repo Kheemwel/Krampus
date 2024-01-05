@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1thar6efabep"]
+
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/fireplace_light.gd" id="1_35j4c"]
+[ext_resource type="Texture2D" uid="uid://dwfot20vw37ta" path="res://Assets/Sprites/fireplace.png" id="1_s2rkw"]
+[ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="2_6mulj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c025x"]
+size = Vector2(61, 30)
+
+[node name="fireplace" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_35j4c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_s2rkw")
+
+[node name="PointLight2D" type="PointLight2D" parent="StaticBody2D/Sprite2D"]
+position = Vector2(0, 14)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_6mulj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 9)
+shape = SubResource("RectangleShape2D_c025x")

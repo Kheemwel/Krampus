@@ -65,9 +65,11 @@ text = "v"
 [node name="reset button" type="Button" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
-offset_right = 20.0
-offset_bottom = 15.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(63.6531, 47.5331)
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="reset button" to="." method="_on_reset_button_pressed"]

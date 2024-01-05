@@ -6,9 +6,9 @@ var _splash_screens: Array[SplashScreen] = []
 
 @onready var _splash_screen_container: CenterContainer = $SplashScreenContainer
 
+	
 func _ready() -> void:
 	assert(_move_to)
-	
 	for splash_screen in _splash_screen_container.get_children():
 		splash_screen.hide()
 		_splash_screens.push_back(splash_screen)
