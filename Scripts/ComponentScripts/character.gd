@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-#@onready var joystick = $CanvasLayer/joystick
-@onready var joystick_v_2 = $CanvasLayer/joystick_v2
+@onready var joystick = %Joystick
+#@onready var joystick_v_2 = $CanvasLayer/joystick_v2
 
 @export var MAX_SPEED: int = 100
 @export var ACCELERATION: int = 1500
@@ -9,6 +9,9 @@ extends CharacterBody2D
 var originalMaxSpeed: int = MAX_SPEED  # Store the original MAX_SPEED
 
 @onready var axis = Vector2.ZERO
+@onready var animation_tree: AnimationTree = $AnimationTree	
+@onready var anim_state = animation_tree.get("parameters/playback")
+
 
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -18,21 +21,35 @@ func _input(event):
 func _ready():
 	originalMaxSpeed = MAX_SPEED  # Store the original MAX_SPEED at the beginning
 
+
+#func _process(delta):
+	
 func _physics_process(delta):
-	move(delta)
+#	print(axis)
+	move()	
+	update_animation_parameters()
+	
 
 func get_input_axis():
 	axis = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	return axis.normalized()
 	
 
-func move(delta):
-	var axis = joystick_v_2.get_velo()
-	if axis:
-		axis = axis.normalized()
+func move():
+	# movement axis base on input key
+	var x_axis = Input.get_axis("move_left", "move_right")
+	var y_axis = Input.get_axis("move_up", "move_down")
+	var input_axis = Vector2(x_axis, y_axis).normalized()
+	
+	# choose joystick axis if input is null
+	axis = joystick.posVector.normalized() if input_axis == Vector2.ZERO else input_axis
+	if axis != Vector2.ZERO:
+		animation_tree.set("parameters/Idle/blend_position", axis)
+		animation_tree.set("parameters/Walk/blend_position", axis)
 		velocity = axis * MAX_SPEED
 	else:
-		velocity = Vector2(0,0)
+		
+		velocity = Vector2.ZERO
 #	axis = get_input_axis()
 #
 #	if Input.is_action_pressed("ui_accept"):
@@ -60,7 +77,17 @@ func apply_movement(accel):
 func character():
 	pass
 
+func update_animation_parameters():
+	if(velocity == Vector2.ZERO):
+		animation_tree["parameters/conditions/Idle"] = true
+		animation_tree["parameters/conditions/Walk"] = false
+	else:
+		animation_tree["parameters/conditions/Idle"] = false
+		animation_tree["parameters/conditions/Walk"] = true
 
+	if(axis != Vector2.ZERO):
+		animation_tree["parameters/Idle/blend_position"] = axis
+		animation_tree["parameters/Walk/blend_position"] = axis
 #interaction to object
 
 @onready var all_interaction = []

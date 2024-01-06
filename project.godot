@@ -17,10 +17,16 @@ config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/show_image=false
 config/icon="res://Assets/Sprites/AppLogo.png"
 
+[audio]
+
+buses/default_bus_layout="res://Assets/Resource/KrampusAudioBusChannels.tres"
+
 [autoload]
 
+GameData="*res://Scripts/ComponentScripts/GameData.gd"
 global="*res://Scripts/SceneScripts/global.gd"
 Transition="*res://Scenes/UI/transition.tscn"
+SwitcherScene="*res://Scripts/ComponentScripts/SwitcherScene.gd"
 
 [display]
 

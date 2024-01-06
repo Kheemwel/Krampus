@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dehvk3qabl8a3"]
+[gd_scene load_steps=3 format=3 uid="uid://dt4y57foc6brl"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/splash_screen.gd" id="1_6tonq"]
 [ext_resource type="Texture2D" uid="uid://bdpolwllv21ix" path="res://Assets/Sprites/Godot_icon 1.png" id="1_exuci"]

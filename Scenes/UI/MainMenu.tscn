@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8ld10j0ie0sb"]
+[gd_scene load_steps=11 format=3 uid="uid://b8ld10j0ie0sb"]
 
-[ext_resource type="Script" path="res://Scripts/SceneScripts/MainMenu.gd" id="1_u1sfq"]
+[ext_resource type="Script" path="res://Scripts/SceneScripts/MainMenu.gd" id="1_2jkos"]
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="2_lb2ko"]
 [ext_resource type="Texture2D" uid="uid://up8d1hwax0f6" path="res://Assets/Sprites/MainMenu Background.png" id="3_cnf2r"]
 [ext_resource type="Texture2D" uid="uid://d2la86uu4dcrl" path="res://Assets/Sprites/Game Title.png" id="4_pwnwl"]
 [ext_resource type="Texture2D" uid="uid://cqrdyg7b01yom" path="res://Assets/Sprites/NewAppTitle.png" id="5_40j6s"]
 [ext_resource type="AudioStream" uid="uid://dagdp8nhc1102" path="res://Assets/Audio/Krampus_MainMenu.mp3" id="7_bq6xu"]
+[ext_resource type="PackedScene" uid="uid://coqcin2y81c28" path="res://Scenes/ComponentScenes/BackgroundMusic.tscn" id="7_stb5x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8dhvo"]
 atlas = ExtResource("5_40j6s")
@@ -35,11 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u1sfq")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_bq6xu")
-autoplay = true
+script = ExtResource("1_2jkos")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -107,6 +104,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = ExtResource("4_pwnwl")
 
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="ColorRect"]
+stream = ExtResource("7_bq6xu")
+bus = &"BGM"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -143,6 +144,9 @@ process_material = SubResource("ParticleProcessMaterial_qp3jk")
 texture = SubResource("AtlasTexture_bi8gy")
 lifetime = 15.0
 preprocess = 15.0
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("7_stb5x")]
+stream = ExtResource("7_bq6xu")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

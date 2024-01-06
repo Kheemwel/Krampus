@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvibnhjvnrxx4"]
+[gd_scene load_steps=11 format=3 uid="uid://bvibnhjvnrxx4"]
 
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="1_gq5ul"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/paused_menu.gd" id="1_oy31b"]
 [ext_resource type="Texture2D" uid="uid://up8d1hwax0f6" path="res://Assets/Sprites/MainMenu Background.png" id="2_27khe"]
+[ext_resource type="PackedScene" uid="uid://coqcin2y81c28" path="res://Scenes/ComponentScenes/BackgroundMusic.tscn" id="2_q05bp"]
 [ext_resource type="Texture2D" uid="uid://cqrdyg7b01yom" path="res://Assets/Sprites/NewAppTitle.png" id="5_esydl"]
 [ext_resource type="Texture2D" uid="uid://d2la86uu4dcrl" path="res://Assets/Sprites/Game Title.png" id="5_wra5x"]
 [ext_resource type="AudioStream" uid="uid://bkm142hmtwfu0" path="res://Assets/Audio/Krampus_PauseMenu.mp3" id="6_lerxa"]
@@ -37,6 +38,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oy31b")
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("2_q05bp")]
+stream = ExtResource("6_lerxa")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -144,10 +148,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "RESUME"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_lerxa")
-autoplay = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(600, -50)

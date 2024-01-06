@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bg6istof6tump" path="res://Assets/Sprites/knob.png" id="3_t4u7c"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/knob.gd" id="4_euyot"]
 
-[node name="joystick" type="Control"]
+[node name="Joystick" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_42xe4")
