@@ -285,11 +285,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_hamqo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hamqo")
 theme_override_styles/focus = SubResource("StyleBoxTexture_hamqo")
 
-[node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("7_cu5xi")]
-visible = false
-offset_top = 1.0
-offset_bottom = 1.0
-
 [node name="Time" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -301,6 +296,11 @@ offset_bottom = 83.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 60
 text = "12:30"
+
+[node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("7_cu5xi")]
+visible = false
+offset_top = 1.0
+offset_bottom = 1.0
 
 [node name="Interaction" type="Node2D" parent="."]
 z_index = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvibnhjvnrxx4"]
+[gd_scene load_steps=13 format=3 uid="uid://bvibnhjvnrxx4"]
 
 [ext_resource type="Texture2D" uid="uid://cckl1or8bh80n" path="res://Assets/Sprites/Snow.png" id="1_gq5ul"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/paused_menu.gd" id="1_oy31b"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cqrdyg7b01yom" path="res://Assets/Sprites/NewAppTitle.png" id="5_esydl"]
 [ext_resource type="Texture2D" uid="uid://d2la86uu4dcrl" path="res://Assets/Sprites/Game Title.png" id="5_wra5x"]
 [ext_resource type="AudioStream" uid="uid://bkm142hmtwfu0" path="res://Assets/Audio/Krampus_PauseMenu.mp3" id="6_lerxa"]
+[ext_resource type="PackedScene" uid="uid://bjypx4w341stv" path="res://Scenes/UI/quit_dialog.tscn" id="8_1od16"]
+[ext_resource type="PackedScene" uid="uid://dkdixuadv3iro" path="res://Scenes/UI/option_menu.tscn" id="9_kfnu8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wudgp"]
 atlas = ExtResource("5_esydl")
@@ -108,15 +110,15 @@ text = "GAME PAUSED"
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.753
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.753
-offset_left = -254.5
-offset_top = -142.16
-offset_right = 254.5
-offset_bottom = 141.84
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 40.0
+offset_right = 105.0
+offset_bottom = 295.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 75
@@ -127,25 +129,38 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 30
 
-[node name="OptionButton" type="Button" parent="VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(210, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "OPTIONS"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(210, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "QUIT"
-
-[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(210, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "RESUME"
+
+[node name="OptionButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="QuitDialog" parent="." instance=ExtResource("8_1od16")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionMenu" parent="." instance=ExtResource("9_kfnu8")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(600, -50)
@@ -156,6 +171,6 @@ lifetime = 15.0
 preprocess = 15.0
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

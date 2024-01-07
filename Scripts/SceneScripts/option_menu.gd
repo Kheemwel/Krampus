@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/UI/MainMenu.tscn")
+	hide()
 
 
 func _on_tree_exiting():
