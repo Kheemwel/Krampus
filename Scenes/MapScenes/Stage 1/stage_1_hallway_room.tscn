@@ -57,6 +57,6 @@ position = Vector2(251, 94)
 position = Vector2(443, 203)
 
 [node name="stage_1_library_room_pos" type="Marker2D" parent="."]
-position = Vector2(477, 450)
+position = Vector2(477, 441)
 
 [node name="Interaction Chat" parent="." instance=ExtResource("7_skdbx")]
