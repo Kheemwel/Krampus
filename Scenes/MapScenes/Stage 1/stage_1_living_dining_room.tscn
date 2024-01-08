@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gh8kkycbud0o"]
+[gd_scene load_steps=11 format=3 uid="uid://gh8kkycbud0o"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/door_position.gd" id="1_benoc"]
 [ext_resource type="PackedScene" uid="uid://vjv25vwotest" path="res://Scenes/ComponentScenes/tilemap.tscn" id="1_qdgvm"]
@@ -13,6 +13,9 @@ size = Vector2(20, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbh1d"]
 size = Vector2(20, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7613"]
+size = Vector2(52, 9)
 
 [node name="stage_1_living_dining_room" type="Node2D"]
 y_sort_enabled = true
@@ -48,11 +51,21 @@ position = Vector2(48, 0)
 position = Vector2(542, 202)
 shape = SubResource("RectangleShape2D_rbh1d")
 
+[node name="stage_2_hallway_room" parent="." instance=ExtResource("4_gd0ir")]
+position = Vector2(96, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stage_2_hallway_room"]
+position = Vector2(227, 301.5)
+shape = SubResource("RectangleShape2D_f7613")
+
 [node name="stage_1_hallway_room_pos" type="Marker2D" parent="."]
 position = Vector2(575, 330)
 
 [node name="stage_1_kitchen_room_pos" type="Marker2D" parent="."]
 position = Vector2(575, 202)
+
+[node name="stage_2_hallway_room_pos" type="Marker2D" parent="."]
+position = Vector2(323, 313)
 
 [node name="Interaction Area" type="Node" parent="."]
 

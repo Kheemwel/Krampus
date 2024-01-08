@@ -20,13 +20,14 @@ func _on_body_exited(body: PhysicsBody2D):
 
 func _process(delta):
 	if entered == true:
-		global.from_level = get_parent().name
 		var stage_folder = ""
-		
-		if global.from_level.begins_with("stage_1"):
+
+		if self.name.begins_with("stage_1"):
 			stage_folder = "Stage 1/"
-		
-		elif global.from_level.begins_with("stage_2"):
+
+		elif self.name.begins_with("stage_2"):
 			stage_folder = "Stage 2/"
 		
+		global.from_level = get_parent().name
+		print(global.from_level)
 		Transition.change_scene_to_file("res://Scenes/MapScenes/" + stage_folder + self.name + ".tscn")
