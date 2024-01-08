@@ -5,11 +5,11 @@ func _input(event):
 		unpause()
 
 func _on_option_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/UI/option_menu.tscn")
+	%OptionMenu.show()
 
 
 func _on_quit_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/UI/MainMenu.tscn")# Replace with function body.
+	%QuitDialog.show()
 
 
 func _on_resume_button_pressed():
@@ -23,3 +23,5 @@ func unpause():
 
 func _on_tree_exiting():
 	get_tree().paused = false
+
+

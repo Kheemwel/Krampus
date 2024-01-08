@@ -208,9 +208,12 @@ libraries = {
 zoom = Vector2(6, 6)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_a0ejb")
+}
 tree_root = SubResource("AnimationNodeStateMachine_76j00")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/conditions/Idle = false
 parameters/conditions/Walk = false
 parameters/Idle/blend_position = Vector2(-0.428571, -0.161677)
@@ -281,6 +284,18 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_hamqo")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hamqo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hamqo")
 theme_override_styles/focus = SubResource("StyleBoxTexture_hamqo")
+
+[node name="Time" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -205.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 83.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "12:30"
 
 [node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("7_cu5xi")]
 visible = false
