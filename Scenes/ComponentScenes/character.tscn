@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://dn7oe210le45m"]
+[gd_scene load_steps=35 format=3 uid="uid://dn7oe210le45m"]
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/character.gd" id="1_psmm1"]
-[ext_resource type="Texture2D" uid="uid://d0vcp4raqeayc" path="res://Assets/Sprites/Nanny-WIP (1).png" id="2_b42tp"]
+[ext_resource type="Texture2D" uid="uid://csalt4snn4dp5" path="res://Assets/Sprites/nanny.png" id="2_hw3nq"]
 [ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="3_43nd8"]
 [ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_gva3s"]
 [ext_resource type="Texture2D" uid="uid://be4pg77xsbs44" path="res://Assets/Sprites/Menu Button.png" id="5_jh46b"]
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8]
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_ipcwa"]
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 12, 13]
+"values": [8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_kmwuo"]
@@ -76,7 +76,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kegeq"]
 resource_name = "walk_right"
-length = 0.6
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,10 +85,27 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_tm4f4"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a0ejb"]
@@ -97,6 +114,7 @@ _data = {
 "WalkDown": SubResource("Animation_pa766"),
 "WalkUp": SubResource("Animation_ipcwa"),
 "idle": SubResource("Animation_kmwuo"),
+"walk_left": SubResource("Animation_tm4f4"),
 "walk_right": SubResource("Animation_kegeq")
 }
 
@@ -131,11 +149,15 @@ animation = &"WalkDown"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vi4mt"]
 animation = &"WalkUp"
 
+[sub_resource type="GDScript" id="GDScript_gtdnw"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6buu4"]
-animation = &"WalkUp"
+resource_name = "walkLeft"
+animation = &"walk_left"
+script = SubResource("GDScript_gtdnw")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_syjyp"]
-animation = &"WalkUp"
+animation = &"walk_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7j6nh"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ubghu")
@@ -193,9 +215,9 @@ collision_mask = 31
 script = ExtResource("1_psmm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_b42tp")
-hframes = 5
-vframes = 5
+texture = ExtResource("2_hw3nq")
+hframes = 4
+vframes = 4
 region_rect = Rect2(21, 21, 17, 24)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -208,15 +230,12 @@ libraries = {
 zoom = Vector2(6, 6)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_a0ejb")
-}
 tree_root = SubResource("AnimationNodeStateMachine_76j00")
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/conditions/Idle = false
 parameters/conditions/Walk = false
-parameters/Idle/blend_position = Vector2(-0.428571, -0.161677)
+parameters/Idle/blend_position = Vector2(-0.00262928, 1.1)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -338,8 +357,8 @@ position = Vector2(0, 10)
 scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_qp3et")
 
-[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="visibility_changed" from="CanvasLayer/PausedMenu" to="." method="_on_paused_menu_visibility_changed"]
 [connection signal="area_entered" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_entered"]
