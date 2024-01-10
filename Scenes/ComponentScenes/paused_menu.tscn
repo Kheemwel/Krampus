@@ -154,8 +154,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 anchors_preset = 0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="OptionMenu" parent="." instance=ExtResource("9_kfnu8")]
 unique_name_in_owner = true
