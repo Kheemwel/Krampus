@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxrarvma2yq0r"]
+
+[ext_resource type="Script" path="res://Scripts/SceneScripts/inventory_screen.gd" id="1_w4a8f"]
+
+[node name="InventoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w4a8f")
+
+[node name="InventoryWindow" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.424
+anchor_right = 0.5
+anchor_bottom = 0.424
+offset_left = -456.0
+offset_top = -205.28
+offset_right = 456.0
+offset_bottom = 205.72
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"InventoryWindowPanel"
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryWindow/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="InventoryContainer" type="GridContainer" parent="InventoryWindow/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.951
+anchor_top = 0.094
+anchor_right = 0.951
+anchor_bottom = 0.094
+offset_left = -37.28
+offset_top = -37.68
+offset_right = 37.7202
+offset_bottom = 37.3198
+grow_horizontal = 0
+theme_type_variation = &"CloseButton"
+metadata/_edit_use_anchors_ = true
+
+[node name="UseItemWindow" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(750, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207031
+anchor_top = 0.430556
+anchor_right = 0.792969
+anchor_bottom = 0.569444
+offset_top = 240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"InventoryWindowPanel"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UseItemWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UseItemWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="UseItemName" type="Label" parent="UseItemWindow/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Item Name"
+
+[node name="UseButton" type="Button" parent="UseItemWindow/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "USE"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="UseItemWindow/MarginContainer/HBoxContainer/UseButton" to="." method="_on_use_button_pressed"]

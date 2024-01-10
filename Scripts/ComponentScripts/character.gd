@@ -12,6 +12,7 @@ var originalMaxSpeed: int = MAX_SPEED  # Store the original MAX_SPEED
 @onready var animation_tree: AnimationTree = $AnimationTree	
 @onready var anim_state = animation_tree.get("parameters/playback")
 
+var direction = Vector2(1, 0)
 
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -47,8 +48,16 @@ func move():
 		animation_tree.set("parameters/Idle/blend_position", axis)
 		animation_tree.set("parameters/Walk/blend_position", axis)
 		velocity = axis * MAX_SPEED
+		# Update direction based on input
+		direction.x = axis.x
+
+		# Flip the sprite animation when moving left
+		if direction.x < 0:
+			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false
+			
 	else:
-		
 		velocity = Vector2.ZERO
 #	axis = get_input_axis()
 #
@@ -131,3 +140,18 @@ func _on_paused_menu_visibility_changed():
 		set_process_input(false)
 	else:
 		set_process_input(true)
+
+
+func _on_inventory_button_pressed():
+	_set_game_menu_visible(false)
+	%InventoryScreen.show()
+
+func _set_game_menu_visible(visible : bool):
+	for c in %GameMenu.get_children():
+		if visible:
+			c.show()
+		else:
+			c.hide()
+
+func _on_inventory_screen_hidden():
+	_set_game_menu_visible(true)

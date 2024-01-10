@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://dn7oe210le45m"]
+[gd_scene load_steps=35 format=3 uid="uid://dn7oe210le45m"]
+
 
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/character.gd" id="1_psmm1"]
-[ext_resource type="Texture2D" uid="uid://d0vcp4raqeayc" path="res://Assets/Sprites/Nanny-WIP (1).png" id="2_b42tp"]
+[ext_resource type="Texture2D" uid="uid://csalt4snn4dp5" path="res://Assets/Sprites/nanny.png" id="2_hw3nq"]
 [ext_resource type="Texture2D" uid="uid://duw3a20corecr" path="res://Assets/Sprites/light.png" id="3_43nd8"]
 [ext_resource type="PackedScene" uid="uid://ddorbemrt3yna" path="res://Scenes/ComponentScenes/joystick.tscn" id="5_gva3s"]
-[ext_resource type="Texture2D" uid="uid://be4pg77xsbs44" path="res://Assets/Sprites/Menu Button.png" id="5_jh46b"]
+[ext_resource type="PackedScene" uid="uid://bxrarvma2yq0r" path="res://Scenes/UI/inventory_screen.tscn" id="5_xqw1a"]
 [ext_resource type="AudioStream" uid="uid://d0wexd2jbkomp" path="res://Assets/Audio/Krampus_MainBackground.mp3" id="6_w1rhj"]
 [ext_resource type="PackedScene" uid="uid://bvibnhjvnrxx4" path="res://Scenes/ComponentScenes/paused_menu.tscn" id="7_cu5xi"]
 
@@ -37,7 +38,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8]
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_ipcwa"]
@@ -54,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 12, 13]
+"values": [8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_kmwuo"]
@@ -76,7 +77,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kegeq"]
 resource_name = "walk_right"
-length = 0.6
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,10 +86,27 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_tm4f4"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a0ejb"]
@@ -97,6 +115,7 @@ _data = {
 "WalkDown": SubResource("Animation_pa766"),
 "WalkUp": SubResource("Animation_ipcwa"),
 "idle": SubResource("Animation_kmwuo"),
+"walk_left": SubResource("Animation_tm4f4"),
 "walk_right": SubResource("Animation_kegeq")
 }
 
@@ -131,11 +150,15 @@ animation = &"WalkDown"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vi4mt"]
 animation = &"WalkUp"
 
+[sub_resource type="GDScript" id="GDScript_gtdnw"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6buu4"]
-animation = &"WalkUp"
+resource_name = "walkLeft"
+animation = &"walk_left"
+script = SubResource("GDScript_gtdnw")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_syjyp"]
-animation = &"WalkUp"
+animation = &"walk_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7j6nh"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ubghu")
@@ -172,9 +195,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jylm"]
 size = Vector2(7.99999, 16)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hamqo"]
-texture = ExtResource("5_jh46b")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfqsg"]
 size = Vector2(16, 8)
 
@@ -193,9 +213,9 @@ collision_mask = 31
 script = ExtResource("1_psmm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_b42tp")
-hframes = 5
-vframes = 5
+texture = ExtResource("2_hw3nq")
+hframes = 4
+vframes = 4
 region_rect = Rect2(21, 21, 17, 24)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -208,15 +228,12 @@ libraries = {
 zoom = Vector2(6, 6)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_a0ejb")
-}
 tree_root = SubResource("AnimationNodeStateMachine_76j00")
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/conditions/Idle = false
 parameters/conditions/Walk = false
-parameters/Idle/blend_position = Vector2(-0.428571, -0.161677)
+parameters/Idle/blend_position = Vector2(-0.00262928, 1.1)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -233,69 +250,85 @@ texture = ExtResource("3_43nd8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InteractButton" type="Button" parent="CanvasLayer"]
+[node name="GameMenu" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InteractButton" type="Button" parent="CanvasLayer/GameMenu"]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.896
-anchor_top = 0.847
-anchor_right = 0.896
-anchor_bottom = 0.847
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.1196
-offset_bottom = 50.1602
+anchor_left = 0.877
+anchor_top = 0.843
+anchor_right = 0.877
+anchor_bottom = 0.843
+offset_left = -49.5601
+offset_top = -49.96
+offset_right = 50.5596
+offset_bottom = 50.2001
 grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"InteractButton"
-metadata/_edit_use_anchors_ = true
 
-[node name="InventoryButton" type="Button" parent="CanvasLayer"]
+[node name="InventoryButton" type="Button" parent="CanvasLayer/GameMenu"]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.698
+anchor_left = 0.703
 anchor_top = 0.842
-anchor_right = 0.698
+anchor_right = 0.703
 anchor_bottom = 0.842
-offset_left = -50.0
-offset_top = -50.2402
-offset_right = 50.56
-offset_bottom = 49.7599
+offset_left = -50.84
+offset_top = -49.24
+offset_right = 49.72
+offset_bottom = 50.76
 theme_type_variation = &"InventoryButton"
-metadata/_edit_use_anchors_ = true
 
-[node name="Joystick" parent="CanvasLayer" instance=ExtResource("5_gva3s")]
+[node name="Joystick" parent="CanvasLayer/GameMenu" instance=ExtResource("5_gva3s")]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.144531
-anchor_top = 0.743056
-anchor_right = 0.144531
-anchor_bottom = 0.743056
+anchor_left = 0.133594
+anchor_top = 0.773611
+anchor_right = 0.133594
+anchor_bottom = 0.773611
 metadata/_edit_use_anchors_ = true
 
-[node name="MenuButton" type="Button" parent="CanvasLayer"]
+[node name="MenuButton" type="Button" parent="CanvasLayer/GameMenu"]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.104
-anchor_top = 0.096
-anchor_right = 0.104
-anchor_bottom = 0.096
-offset_left = -41.12
-offset_top = -36.12
-offset_right = 40.8794
-offset_bottom = 35.8798
-theme_override_styles/normal = SubResource("StyleBoxTexture_hamqo")
-theme_override_styles/hover = SubResource("StyleBoxTexture_hamqo")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_hamqo")
-theme_override_styles/focus = SubResource("StyleBoxTexture_hamqo")
+anchor_left = 0.07
+anchor_top = 0.097
+anchor_right = 0.07
+anchor_bottom = 0.097
+offset_left = -37.6
+offset_top = -37.84
+offset_right = 37.4003
+offset_bottom = 37.16
+theme_type_variation = &"PauseButton"
 
-[node name="Time" type="Label" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -205.0
-offset_top = 30.0
-offset_right = -30.0
-offset_bottom = 83.0
+[node name="Time" type="Label" parent="CanvasLayer/GameMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.91
+anchor_top = 0.083
+anchor_right = 0.91
+anchor_bottom = 0.083
+offset_left = -87.8
+offset_top = -26.76
+offset_right = 87.2
+offset_bottom = 26.24
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 60
 text = "12:30"
+
+[node name="InventoryScreen" parent="CanvasLayer" instance=ExtResource("5_xqw1a")]
+unique_name_in_owner = true
+visible = false
 
 [node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("7_cu5xi")]
 visible = false
@@ -338,9 +371,12 @@ position = Vector2(0, 10)
 scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_qp3et")
 
-[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_interact_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/InteractButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameMenu/InteractButton" to="." method="_on_interact_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameMenu/InteractButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameMenu/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="visibility_changed" from="CanvasLayer/GameMenu/InventoryButton" to="." method="_on_inventory_button_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/GameMenu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="hidden" from="CanvasLayer/InventoryScreen" to="." method="_on_inventory_screen_hidden"]
 [connection signal="visibility_changed" from="CanvasLayer/PausedMenu" to="." method="_on_paused_menu_visibility_changed"]
 [connection signal="area_entered" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction/Interaction Area" to="." method="_on_interaction_area_area_exited"]

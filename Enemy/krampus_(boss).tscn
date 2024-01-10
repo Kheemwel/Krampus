@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dke8unhjdx8ph"]
 
 [ext_resource type="Script" path="res://Enemy/KRAMPUS (BOSS).gd" id="1_fd717"]
-[ext_resource type="Texture2D" uid="uid://cddnow6eaitsh" path="res://icon.svg" id="2_8kgd2"]
+[ext_resource type="Texture2D" uid="uid://t26jw4b1ay72" path="res://Assets/Sprites/FlameDemon Evolved.png" id="2_u6c65"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3c5cs"]
 radius = 7.07107
@@ -23,8 +23,7 @@ nav_agent = NodePath("Navigation/NavigationAgent2D")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.294118, 0, 0, 1)
 position = Vector2(0, 2.84217e-14)
-scale = Vector2(0.270313, 0.29375)
-texture = ExtResource("2_8kgd2")
+texture = ExtResource("2_u6c65")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3c5cs")
