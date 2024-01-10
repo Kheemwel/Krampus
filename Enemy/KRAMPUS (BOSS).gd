@@ -35,7 +35,7 @@ func _on_recalculate_timer_timeout():
 
 func _on_aggro_range_area_entered(area):
 	target_node = area.owner
-
+	
 
 func _on_de_aggro_range_area_exited(area):
 	if area.owner == target_node:
