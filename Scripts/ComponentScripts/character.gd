@@ -140,3 +140,18 @@ func _on_paused_menu_visibility_changed():
 		set_process_input(false)
 	else:
 		set_process_input(true)
+
+
+func _on_inventory_button_pressed():
+	_set_game_menu_visible(false)
+	%InventoryScreen.show()
+
+func _set_game_menu_visible(visible : bool):
+	for c in %GameMenu.get_children():
+		if visible:
+			c.show()
+		else:
+			c.hide()
+
+func _on_inventory_screen_hidden():
+	_set_game_menu_visible(true)
